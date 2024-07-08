@@ -1,10 +1,8 @@
-# Next.js 14+ Boilerplate
+# NEXT.JS - PRACTICE ONE
 
-This is a [Next.js](https://nextjs.org/) boilerplate built with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app)
+### FEATURES
 
-### Features
-
-This boilerplate includes:
+This practice includes:
 - ⚡ [Next.js](https://nextjs.org/) with App Router support
 - 🔥 Type checking [TypeScript](https://www.typescriptlang.org/)
 - 💎 Integrate with [Tailwind CSS](https://tailwindcss.com/)
@@ -18,6 +16,35 @@ This boilerplate includes:
 - ☂️ Code coverage with [V8](https://v8.dev/blog/javascript-code-coverage)
 - 🎉 Storybook for UI development
 
+### REQUIREMENTS:
+
+- Make a webapp to manage users, there are 2 models: Role, User
+- Each user will have a fixed role, which can be updated to change the role
+- Show table list all role
+- Add new role
+- Role detail, can update role title, description
+- Show table in all users
+  - [Design](https://dribbble.com/shots/21470241-Managing-users)
+- Support filter & ordering by:
+  - Select role
+  - Order by name
+  - Order by joined
+- View user detail
+  - [Design](https://dribbble.com/shots/19311751-Add-a-new-Role-or-User-Modal-Business-Management-System)
+  - Note: Need to add all fields from User Model
+- Pagination
+- Apply storybook and unit test
+
+
+## TARGET
+
+* Get familiar with the outstanding features of Next.js especially routing, caching, streaming and data fetching.
+* Know how a Next.js application works and accomplish a full-stack web application.
+* Distinguish between server, client directives and use it correspondingly for each case.
+* Handle errors and be aware of which errors should be shown for each situation.
+* Bear in mind that improving accessibility will be always involved.
+* Get to know metadata which is crucial for SEO and shareability.
+
 
 ## How to run
 
@@ -29,7 +56,7 @@ Make sure you install packages with correct version below:
 
 - **Note:**:
     - Please add `.env` into root of project source code, refer `.env.sample`.
-    - Refer: Here's the [sample mockAPI project](https://mockapi.io/clone/665e8a3f1e9017dc16f05e15), feel free to **clone** then use in your project
+    - Refer: Here's the [mockAPI project](https://mockapi.io/projects/6669171e2e964a6dfed3c99b), feel free to **clone** then use in your project
 
 Check and update config image hosting on `next.config.mjs` file follow [Next.js document](https://nextjs.org/docs/messages/next-image-unconfigured-host)
 
@@ -37,8 +64,8 @@ Check and update config image hosting on `next.config.mjs` file follow [Next.js 
 
 | Command                                                                                                            | Action                    |
 | :------------------------------------------------------------------------------------------------------------------| :------------------------ |
-| `git clone --depth=1 git@gitlab.asoft-python.com:bgh/javascript/boilerplates/nextjs-boilerplate.git nextjs-project`| Clone Repository with SSH |
-| `$ cd nextjs-project`                                                                                              | Redirect to folder        |
+| `https://gitlab.asoft-python.com/kien.nguyen/nextjs-user-management`| Clone Repository with SSH |
+| `$ git checkout feat/nextjs-practice`                                                                                              | Checkout to feature branch        |
 
 ### Build and Run app
 
@@ -86,18 +113,7 @@ Check and update config image hosting on `next.config.mjs` file follow [Next.js 
 
 This project is maintained by:
 
-- **Huy Nguyen Van**
-  - Email: huy.nguyenvan@asnet.com.vn
-  - GitLab: [@huy.nguyenvan](https://gitlab.asoft-python.com/huy.nguyenvan)
-  - Slack: huy.nguyenvan
-
-### Responsibilities
-
-- Reviewing and merging pull requests.
-- Managing and responding to issues.
-- Updating project documentation.
-- Ensuring the project is up-to-date with the latest standards and practices.
-
-### Availability
-
-Huy is typically available during weekdays and aims to respond to issues and pull requests within 48 hours. For urgent matters, please email directly.
+- **Kien Nguyen Duong Trung**
+  - Email: kien.nguyen@asnet.com.vn
+  - GitLab: [@kien.nguyen](https://gitlab.asoft-python.com/kien.nguyen)
+  - Slack: kien.nguyen
