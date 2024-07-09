@@ -4,7 +4,7 @@
 import { PageErrorProps } from '@/types/components';
 
 // Components
-import { Button } from '@/components/Button';
+import { Button } from '@/components/common/Button';
 
 const Error = ({
   // error,

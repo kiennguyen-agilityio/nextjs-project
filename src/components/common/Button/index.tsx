@@ -40,11 +40,11 @@ export const Button = ({
   switch (variant) {
     case 'primary':
       stateClass =
-        'bg-blue-500 text-white hover:bg-blue-600 disabled:bg-blue-300';
+        'bg-[#4270ec] text-white hover:bg-blue-600 disabled:bg-blue-300';
       break;
     case 'secondary':
       stateClass =
-        'bg-gray-400 text-white hover:bg-gray-500 disabled:bg-gray-300';
+        'bg-white text-[#62656e] hover:bg-gray-300 disabled:bg-gray-300';
       break;
     case 'success':
       stateClass =
