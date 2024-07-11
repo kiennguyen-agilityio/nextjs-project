@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserInfo should match the snapshot 1`] = `
+<DocumentFragment>
+  <table>
+    <tbody>
+      <tr
+        class="flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 border-b border-gray-200"
+      >
+        <td
+          class="flex items-center w-full sm:w-1/4 mb-4 sm:mb-0"
+        >
+          <img
+            alt="John Doe"
+            class="w-10 h-10 rounded-lg mr-4"
+            data-nimg="1"
+            decoding="async"
+            height="40"
+            loading="lazy"
+            src="/_next/image?url=https%3A%2F%2Fs.net.vn%2FUr2Q&w=96&q=75"
+            srcset="/_next/image?url=https%3A%2F%2Fs.net.vn%2FUr2Q&w=48&q=75 1x, /_next/image?url=https%3A%2F%2Fs.net.vn%2FUr2Q&w=96&q=75 2x"
+            style="color: transparent;"
+            width="40"
+          />
+          <div
+            class="text-sm font-medium truncate"
+          >
+            test@example.com
+          </div>
+        </td>
+        <td
+          class="text-sm text-gray-500 w-full sm:w-1/6 truncate mb-4 sm:mb-0"
+        >
+          John Doe
+        </td>
+        <td
+          class="text-sm w-full sm:w-1/6 truncate mb-4 sm:mb-0"
+        >
+          Admin
+        </td>
+        <td
+          class="text-sm w-full sm:w-1/6 truncate mb-4 sm:mb-0"
+        >
+          2022-01-01
+        </td>
+        <td
+          class="w-full sm:w-1/12"
+        >
+          <button
+            class="text-gray-500"
+            data-testid="triple-dot"
+          >
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M5 12h.01M12 12h.01M19 12h.01"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="4"
+              />
+            </svg>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</DocumentFragment>
+`;
