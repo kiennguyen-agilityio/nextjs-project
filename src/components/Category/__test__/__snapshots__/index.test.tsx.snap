@@ -1,0 +1,92 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders Category component with dropdown buttons 1`] = `
+<DocumentFragment>
+  <div
+    class="flex space-x-8 p-4"
+  >
+    <div
+      class="relative inline-block text-left"
+    >
+      <select
+        class="inline-flex justify-center w-full rounded-3xl px-4 py-2  text-sm  font-medium text-gray-700 hover:bg-gray-200 focus:outline-none"
+      >
+        <option
+          value=""
+        >
+          Email
+        </option>
+        <option
+          value="email1"
+        >
+          email1@example.com
+        </option>
+        <option
+          value="email2"
+        >
+          email2@example.com
+        </option>
+      </select>
+    </div>
+    <div
+      class="relative inline-block text-left"
+    >
+      <select
+        class="inline-flex justify-center w-full rounded-3xl px-4 py-2  text-sm  font-medium text-gray-700 hover:bg-gray-200 focus:outline-none"
+      >
+        <option
+          value=""
+        >
+          Full Name
+        </option>
+        <option
+          value="john_doe"
+        >
+          John Doe
+        </option>
+        <option
+          value="jane_doe"
+        >
+          Jane Doe
+        </option>
+      </select>
+    </div>
+    <div
+      class="relative inline-block text-left"
+    >
+      <select
+        class="inline-flex justify-center w-full rounded-3xl px-4 py-2  text-sm  font-medium text-gray-700 hover:bg-gray-200 focus:outline-none"
+      >
+        <option
+          value=""
+        >
+          Role
+        </option>
+      </select>
+    </div>
+    <div
+      class="relative inline-block text-left"
+    >
+      <select
+        class="inline-flex justify-center w-full rounded-3xl px-4 py-2  text-sm  font-medium text-gray-700 hover:bg-gray-200 focus:outline-none"
+      >
+        <option
+          value=""
+        >
+          Joined
+        </option>
+        <option
+          value="2021"
+        >
+          2021
+        </option>
+        <option
+          value="2022"
+        >
+          2022
+        </option>
+      </select>
+    </div>
+  </div>
+</DocumentFragment>
+`;

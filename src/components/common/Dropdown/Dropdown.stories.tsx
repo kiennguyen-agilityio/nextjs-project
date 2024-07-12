@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 // components
-import Category from '@/components/common/Dropdown';
+import Dropdown from '@/components/common/Dropdown';
 
 // mocks
 import { categoryOptions } from '@/mocks';
 
 const meta = {
-  title: 'Components/Category',
-  component: Category,
+  title: 'Components/Dropdown',
+  component: Dropdown,
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
-} satisfies Meta<typeof Category>;
+} satisfies Meta<typeof Dropdown>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

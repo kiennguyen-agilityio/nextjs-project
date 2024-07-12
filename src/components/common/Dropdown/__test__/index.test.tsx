@@ -8,7 +8,7 @@ import { categoryOptions } from '@/mocks';
 
 test('renders dropdown button with label and options', () => {
   const { asFragment } = render(
-    <Category label="Category" options={categoryOptions} />,
+    <Category label="Dropdown" options={categoryOptions} />,
   );
   expect(asFragment()).toMatchSnapshot();
 });
