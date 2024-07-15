@@ -12,8 +12,8 @@ interface UserRowProps {
 }
 
 const UserRow = ({ avatar, email, name, role, joinDate }: UserRowProps) => (
-  <tr className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 border-b border-gray-200">
-    <td className="flex items-center w-full sm:w-1/4 mb-4 sm:mb-0">
+  <tr className="flex flex-col sm:flex-row items-start sm:items-center sm:gap-10 pr-8 md:pr-0 justify-between p-0 sm:p-4 border-b border-gray-200 hover:bg-gray-100 transition-colors duration-200 ease-in-out">
+    <td className="flex items-center w-full mb-4 sm:mb-0">
       <Image
         src={avatar}
         alt={name}
@@ -21,15 +21,13 @@ const UserRow = ({ avatar, email, name, role, joinDate }: UserRowProps) => (
         width={40}
         height={40}
       />
-      <div className="text-sm font-medium truncate">{email}</div>
+      <div className="text-sm font-medium sm:truncate max-w-24 xl:max-w-64 md:max-w-25">
+        {email}
+      </div>
     </td>
-    <td className="text-sm text-gray-500 w-full sm:w-1/6 truncate mb-4 sm:mb-0">
-      {name}
-    </td>
-    <td className="text-sm w-full sm:w-1/6 truncate mb-4 sm:mb-0">{role}</td>
-    <td className="text-sm w-full sm:w-1/6 truncate mb-4 sm:mb-0">
-      {joinDate}
-    </td>
+    <td className="text-sm w-full truncate mb-4 sm:mb-0">{name}</td>
+    <td className="text-sm w-full truncate mb-4 sm:mb-0">{role}</td>
+    <td className="text-sm w-full truncate mb-4 sm:mb-0">{joinDate}</td>
     <td className="w-full sm:w-1/12">
       <button className="text-gray-500" data-testid="triple-dot">
         <TripleDot />
