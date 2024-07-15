@@ -1,3 +1,5 @@
+import { Role } from '@/models/RoleModel';
+
 export const categoryOptions = [
   { value: 'option1', label: 'Option 1' },
   { value: 'option2', label: 'Option 2' },
@@ -33,4 +35,10 @@ export const listCategory = [
       { value: '2022', label: '2022' },
     ],
   },
+];
+
+export const roles: Role[] = [
+  { id: 1, name: 'Admin', description: 'Administrator role' },
+  { id: 2, name: 'User', description: 'Regular user role' },
+  { id: 3, name: 'Guest', description: 'Guest user role' },
 ];
