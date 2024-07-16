@@ -9,16 +9,30 @@ const type = 'text';
 const placeholder = 'Test Placeholder';
 
 describe('Input', () => {
+  const mockOnChange = jest.fn();
+
   it('should match the snapshot', () => {
     const { asFragment } = render(
-      <Input name={name} label={label} type={type} placeholder={placeholder} />,
+      <Input
+        name={name}
+        label={label}
+        type={type}
+        placeholder={placeholder}
+        onChange={mockOnChange}
+      />,
     );
     expect(asFragment()).toMatchSnapshot();
   });
 
   test('renders input element with correct attributes', () => {
     render(
-      <Input name={name} label={label} type={type} placeholder={placeholder} />,
+      <Input
+        name={name}
+        label={label}
+        type={type}
+        placeholder={placeholder}
+        onChange={mockOnChange}
+      />,
     );
 
     const inputElement = screen.getByPlaceholderText(placeholder);
