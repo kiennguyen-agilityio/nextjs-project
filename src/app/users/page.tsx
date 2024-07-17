@@ -1,28 +1,18 @@
+import { Metadata } from 'next';
+
 // components
-import Category from '@/components/Category';
-import UserRow from '@/components/UserRow';
+import UserList from '@/ui/user/UserList';
 
-// mocks
-import { users } from '@/mocks';
+export const metadata: Metadata = {
+  title: 'User Listing',
+};
 
-const UserListPage = () => (
-  <div className="p-4">
-    <table className="w-full table-auto">
-      <Category />
-      <tbody>
-        {users.map(({ avatar, email, name, role, joinDate }) => (
-          <UserRow
-            key={email}
-            avatar={avatar}
-            email={email}
-            name={name}
-            role={role}
-            joinDate={joinDate}
-          />
-        ))}
-      </tbody>
-    </table>
-  </div>
-);
+const UserPage = () => {
+  return (
+    <main>
+      <UserList />
+    </main>
+  );
+};
 
-export default UserListPage;
+export default UserPage;

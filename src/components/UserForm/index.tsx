@@ -2,7 +2,7 @@
 import { useState } from 'react';
 
 // models
-import { User } from '@/models/UserModel';
+import { UserModel } from '@/models/UserModel';
 
 // components
 import { Input } from '@/components/common/Input';
@@ -13,7 +13,7 @@ import Dropdown from '@/components/common/Dropdown';
 import { categoryOptions } from '@/mocks';
 
 interface UserFormProps {
-  user?: User;
+  user?: UserModel;
 }
 
 const UserForm = ({ user }: UserFormProps) => {
