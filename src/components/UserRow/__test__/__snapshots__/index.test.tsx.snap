@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`UserInfo should match the snapshot 1`] = `
+exports[`UserRow should render all the content 1`] = `
 <DocumentFragment>
   <table>
     <tbody>
@@ -41,7 +41,7 @@ exports[`UserInfo should match the snapshot 1`] = `
         <td
           class="text-sm w-full truncate mb-4 sm:mb-0"
         >
-          2022-01-01
+          1/1/2022
         </td>
         <td
           class="w-full sm:w-1/12"

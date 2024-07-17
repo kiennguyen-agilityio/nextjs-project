@@ -13,10 +13,11 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
+    id: '1',
     avatar: 'https://s.net.vn/Ur2Q',
     email: 'test@example.com',
     name: 'John Doe',
-    role: 'Admin',
-    joinDate: '2022-01-01',
+    userRole: 1,
+    joined: new Date('2022-01-01'),
   },
 };

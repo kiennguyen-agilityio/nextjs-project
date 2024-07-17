@@ -68,5 +68,17 @@ exports[`renders Category component with dropdown buttons 1`] = `
       2022
     </option>
   </select>
+  <table>
+    <tbody />
+    <thead>
+      <tr
+        class="flex items-center justify-between pl-0 md:pl-0 pr-8 md:pr-12 border-b border-gray-200"
+      >
+        <th
+          class="text-left flex items-center mb-4 sm:mb-0"
+        />
+      </tr>
+    </thead>
+  </table>
 </DocumentFragment>
 `;
