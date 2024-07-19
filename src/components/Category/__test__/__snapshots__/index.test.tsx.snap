@@ -3,7 +3,6 @@
 exports[`renders Category component with dropdown buttons 1`] = `
 <DocumentFragment>
   <table>
-    <tbody />
     <thead>
       <tr
         class="flex items-center justify-between pl-0 md:pl-0 pr-8 md:pr-12 border-b border-gray-200"

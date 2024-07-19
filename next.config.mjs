@@ -1,15 +1,20 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  remotePatterns: [
-    {
-      protocol: 'https',
-      hostname: 'loremflickr.com',
-      port: '',
-      pathname: '/**',
-    },
-  ],
   images: {
-    domains: ['s.net.vn'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'loremflickr.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 's.net.vn',
+        port: '',
+        pathname: '/**',
+      },
+    ],
   },
 };
 
