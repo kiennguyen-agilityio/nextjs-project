@@ -8,10 +8,10 @@ import { Input } from '@/components/common/Input';
 import { Button } from '@/components/common/Button';
 
 // models
-import { Role } from '@/models/RoleModel';
+import { RoleModel } from '@/models/RoleModel';
 
 export interface RoleFormProps {
-  role?: Role;
+  role?: RoleModel;
 }
 
 const RoleForm = ({ role }: RoleFormProps) => {
@@ -19,6 +19,10 @@ const RoleForm = ({ role }: RoleFormProps) => {
   const [description] = useState(
     role?.description || 'Admin is the super user',
   );
+
+  const handleOnchange = () => {
+    // TODO: handle onchange later
+  };
 
   return (
     <form className="max-w-md mx-auto p-4 bg-white shadow-md rounded-lg">
@@ -30,7 +34,12 @@ const RoleForm = ({ role }: RoleFormProps) => {
         </a>
       </p>
       <div className="mb-4">
-        <Input type="role" name="title" label="Type name" />
+        <Input
+          type="role"
+          name="title"
+          label="Type name"
+          onChange={handleOnchange}
+        />
       </div>
 
       <div className="mb-4">

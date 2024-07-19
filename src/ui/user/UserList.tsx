@@ -1,15 +1,22 @@
 // components
 import Category from '@/components/Category';
 import UserRow from '@/components/UserRow';
+import Pagination from '@/components/common/Pagination';
 
 // services
-import { getUserList } from '@/api/user';
+import { getTotalUsers, getUserList } from '@/api/user';
 
-const UserList = async () => {
-  const users = await getUserList();
+type UserListProps = {
+  page: number;
+  limit: number;
+};
+
+const UserList = async ({ page, limit }: UserListProps) => {
+  const totalUsers = await getTotalUsers();
+  const users = await getUserList(page, limit);
 
   return (
-    <div className="p-4">
+    <>
       <table className="w-full table-auto">
         <Category />
         <tbody>
@@ -26,7 +33,9 @@ const UserList = async () => {
           ))}
         </tbody>
       </table>
-    </div>
+
+      <Pagination totalUsers={totalUsers} limit={limit} currentPage={page} />
+    </>
   );
 };
 
