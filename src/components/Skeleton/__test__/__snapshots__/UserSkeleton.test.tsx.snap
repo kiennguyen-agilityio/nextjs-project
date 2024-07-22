@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RoleSkeleton Component renders without crashing and matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="w-10 h-10 bg-gray-300 rounded-lg mr-4 animate-pulse"
+  />
+  <div
+    class="w-1/4 h-4 bg-gray-300 rounded-md animate-pulse"
+  />
+  <div
+    class="w-6 h-6 bg-gray-300 rounded-full animate-pulse"
+  />
+</DocumentFragment>
+`;
