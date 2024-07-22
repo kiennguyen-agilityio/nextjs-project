@@ -1,3 +1,5 @@
+import { Suspense } from 'react';
+
 import { Metadata } from 'next';
 
 // components
@@ -5,6 +7,9 @@ import UserList from '@/ui/user/UserList';
 
 // constants
 import { DEFAULT_LIMIT } from '@/constants/defaultValue';
+
+// components
+import UserSkeleton from '@/components/Skeleton/UserSkeleton';
 
 export const metadata: Metadata = {
   title: 'User Listing',
@@ -22,7 +27,9 @@ const UserPage = ({ searchParams }: UserPageProps) => {
   const limit = Number(searchParams.limit) || DEFAULT_LIMIT;
   return (
     <main>
-      <UserList limit={limit} page={page} />
+      <Suspense fallback={<UserSkeleton />}>
+        <UserList limit={limit} page={page} />
+      </Suspense>
     </main>
   );
 };
