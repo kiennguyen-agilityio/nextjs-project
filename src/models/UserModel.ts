@@ -2,7 +2,7 @@ export interface UserModel {
   id: string;
   name: string;
   email: string;
-  userRole: number;
+  userRole: string;
   avatar: string;
   joined: Date;
 }

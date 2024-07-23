@@ -9,36 +9,68 @@ import { Input } from '@/components/common/Input';
 import { Button } from '@/components/common/Button';
 import Dropdown from '@/components/common/Dropdown';
 
-// mocks
-import { categoryOptions } from '@/mocks';
+// models
+import { SelectType } from '@/types/SelectType';
 
 interface UserFormProps {
   user?: UserModel;
+  roleName: string;
+  roleOptions: SelectType[];
+  selectedRole: string;
 }
 
-const UserForm = ({ user }: UserFormProps) => {
+const UserForm = ({
+  user,
+  roleName,
+  roleOptions,
+  selectedRole,
+}: UserFormProps) => {
   const [email, setEmail] = useState(user?.email || '');
-  const [role] = useState(user?.userRole || 'Business');
+  const [name, setName] = useState(user?.name || '');
+  const [welcomeMessage, setWelcomeMessage] = useState(
+    "Welcome aboard! We are excited you are here, and we look forward to working with you. We know with your skills and experience you're a great asset to our department. If you have any questions during your first week, please contact me at any time.",
+  );
+
+  const handleWelcomeMessageChange = (
+    event: React.ChangeEvent<HTMLTextAreaElement>,
+  ) => {
+    setWelcomeMessage(event.target.value);
+  };
 
   const handleEmailChange = (newEmail: string) => {
     setEmail(newEmail);
   };
 
+  const handleUserNameChange = (newName: string) => {
+    setName(newName);
+  };
+
   return (
     <form className="max-w-md mx-auto p-4 bg-white shadow-md rounded-lg">
-      <h2 className="text-xl font-bold mb-4">{role} role</h2>
+      <h2 className="text-xl font-bold mb-4">{roleName} role</h2>
       <p className="text-sm text-gray-600 mb-4">
-        Everyone who works on your {role} can have different roles
+        Everyone who works on your {roleName} can have different roles
         <a href="#" className="text-blue-500 ml-1">
           learn more
         </a>
       </p>
+
+      <div className="mb-4">
+        <Input
+          type="name"
+          value={name}
+          customClass="mt-1 p-2 w-full border rounded-md"
+          name="name"
+          onChange={handleUserNameChange}
+          label="Type Candidate Name"
+        />
+      </div>
       <div className="mb-4">
         <Input
           type="email"
           value={email}
           customClass="mt-1 p-2 w-full border rounded-md"
-          name={'email'}
+          name="email"
           onChange={handleEmailChange}
           label="Type Candidate Email"
         />
@@ -48,8 +80,8 @@ const UserForm = ({ user }: UserFormProps) => {
           Select Role
         </label>
         <Dropdown
-          label={role}
-          options={categoryOptions}
+          label={selectedRole}
+          options={roleOptions}
           customClass="mt-1 p-2 min-w-full rounded-md border py-4"
         />
       </div>
@@ -60,10 +92,8 @@ const UserForm = ({ user }: UserFormProps) => {
         <textarea
           className="mt-1 p-2 w-full border rounded-md"
           rows={4}
-          value=" Welcome aboard! We are excited you are here, and we look forward to
-          working with you. We know with your skills and experience you're
-          a great asset to our department. If you have any questions during your
-          first week, please contact me at any time."
+          value={welcomeMessage}
+          onChange={handleWelcomeMessageChange}
         />
       </div>
       <div className="flex justify-end space-x-2">

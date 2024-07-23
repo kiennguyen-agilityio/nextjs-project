@@ -27,3 +27,14 @@ export const getTotalUsers = async () => {
 
   return data.length;
 };
+
+export const getUserById = async (id: string) => {
+  const USER_BY_ID_URL = `${process.env.API_URL}/${API_ENDPOINT.USER_LIST}/${id}`;
+  const res = await fetch(USER_BY_ID_URL, {
+    cache: 'no-store',
+  });
+
+  const data: UserModel = await res.json();
+
+  return data;
+};

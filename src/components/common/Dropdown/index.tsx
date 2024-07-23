@@ -1,6 +1,8 @@
+import { SelectType } from '@/types/SelectType';
+
 interface DropdownProps {
   label: string | number;
-  options: Array<{ value: string; label: string }>;
+  options: SelectType[];
   customClass?: string;
 }
 
@@ -10,9 +12,7 @@ const Dropdown = ({ label, options, customClass }: DropdownProps) => (
   >
     <option value="">{label}</option>
     {options.map((option) => (
-      <option key={option.value} value={option.value}>
-        {option.label}
-      </option>
+      <option key={option.id}>{option.label}</option>
     ))}
   </select>
 );
