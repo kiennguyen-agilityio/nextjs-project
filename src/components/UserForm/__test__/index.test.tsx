@@ -1,9 +1,32 @@
 import { render } from '@testing-library/react';
 
-// components
+// component
 import UserForm from '@/components/UserForm';
 
-test('renders user form', () => {
-  const { asFragment } = render(<UserForm />);
-  expect(asFragment()).toMatchSnapshot();
+// mocks
+import { roleOptions } from '@/mocks';
+
+describe('UserForm', () => {
+  const user = {
+    name: 'name 1',
+    avatar: 'https://s.net.vn/Ur2Q',
+    userRole: '78e731027d8fd50ed642340b7c9a63b3',
+    joined: new Date('2022-01-01'),
+    email: 'email 1',
+    id: 'c4ca4238a0b923820dcc509a6f75849b',
+  };
+
+  const roleName = 'Admin';
+
+  it('renders UserForm correctly', () => {
+    const { asFragment } = render(
+      <UserForm
+        user={user}
+        roleName={roleName}
+        roleOptions={roleOptions}
+        selectedRole={roleName}
+      />,
+    );
+    expect(asFragment()).toMatchSnapshot();
+  });
 });

@@ -1,3 +1,55 @@
-export default function Page() {
-  return <p>View user detail and edit user</p>;
+import { Metadata } from 'next';
+
+// apis
+import { getRoleById, getRoleList } from '@/api/role';
+import { getUserById } from '@/api/user';
+
+// models
+import { RoleModel } from '@/models/RoleModel';
+import { UserModel } from '@/models/UserModel';
+
+// components
+import UserForm from '@/components/UserForm';
+
+// types
+import { SelectType } from '@/types/SelectType';
+
+interface PageProps {
+  params: {
+    id: string;
+  };
 }
+
+export const metadata: Metadata = {
+  title: 'User Detail',
+};
+
+const Page = async ({ params }: PageProps) => {
+  const { id } = params;
+
+  try {
+    const user: UserModel = await getUserById(id);
+    const role: RoleModel = await getRoleById(user.userRole);
+    const totalRoles: RoleModel[] = await getRoleList();
+    const roleName: string = role.name;
+    const roleOptions: SelectType[] = totalRoles.map((role) => ({
+      id: role.id.toString(),
+      label: role.name,
+    }));
+
+    return (
+      <div className="p-4">
+        <UserForm
+          user={user}
+          roleName={roleName}
+          roleOptions={roleOptions}
+          selectedRole={roleName}
+        />
+      </div>
+    );
+  } catch (error) {
+    return null;
+  }
+};
+
+export default Page;

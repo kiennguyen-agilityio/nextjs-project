@@ -1,23 +1,26 @@
+'use client';
 import Image from 'next/image';
-
-// components
-import { TripleDot } from '@/icons/TripleDot';
+import { useState } from 'react';
 
 // models
 import { UserModel } from '@/models/UserModel';
-import { RoleModel } from '@/models/RoleModel';
+import TripleDotActions from '@/components/TripleDotAction';
 
-// api
-import { getRoleById } from '@/api/role';
+// components
 
-const UserRow = async ({
-  avatar,
-  name,
-  email,
-  userRole,
-  joined,
-}: UserModel) => {
-  const role: RoleModel = await getRoleById(userRole);
+type UserRowProps = {
+  user: UserModel;
+  userRole: string;
+};
+
+const UserRow = ({ user, userRole }: UserRowProps) => {
+  const [isDropdownOpen, setDropdownOpen] = useState(false);
+
+  const toggleDropdown = () => setDropdownOpen(!isDropdownOpen);
+
+  const handleOnBlur = () => setDropdownOpen(false);
+
+  const { id, name, email, avatar, joined } = user;
 
   return (
     <tr className="flex flex-col sm:flex-row items-start sm:items-center sm:gap-10 pr-8 md:pr-0 justify-between p-0 sm:p-4 border-b border-gray-200 hover:bg-gray-100 transition-colors duration-200 ease-in-out">
@@ -34,14 +37,17 @@ const UserRow = async ({
         </div>
       </td>
       <td className="text-sm w-full truncate mb-4 sm:mb-0">{name}</td>
-      <td className="text-sm w-full truncate mb-4 sm:mb-0">{role.name}</td>
+      <td className="text-sm w-full truncate mb-4 sm:mb-0">{userRole}</td>
       <td className="text-sm w-full truncate mb-4 sm:mb-0">
         {new Date(joined).toLocaleDateString()}
       </td>
       <td className="w-full sm:w-1/12">
-        <button className="text-gray-500" data-testid="triple-dot">
-          <TripleDot />
-        </button>
+        <TripleDotActions
+          link={`/users/${id}/edit`}
+          isDropdownOpen={isDropdownOpen}
+          toggleDropdown={toggleDropdown}
+          onBlur={handleOnBlur}
+        />
       </td>
     </tr>
   );

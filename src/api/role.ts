@@ -16,7 +16,7 @@ export const getRoleList = async () => {
   return data;
 };
 
-export const getRoleById = async (id: number) => {
+export const getRoleById = async (id: string) => {
   const ALL_ROLES_URL = `${process.env.API_URL}/${API_ENDPOINT.ROLE_LIST}/${id}`;
 
   const res = await fetch(ALL_ROLES_URL, {});

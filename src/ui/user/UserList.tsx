@@ -5,6 +5,10 @@ import Pagination from '@/components/common/Pagination';
 
 // services
 import { getTotalUsers, getUserList } from '@/api/user';
+import { getRoleById } from '@/api/role';
+
+// models
+import { RoleModel } from '@/models/RoleModel';
 
 type UserListProps = {
   page: number;
@@ -20,17 +24,24 @@ const UserList = async ({ page, limit }: UserListProps) => {
       <table className="w-full table-auto">
         <Category />
         <tbody>
-          {users.map(({ id, avatar, email, name, userRole, joined }) => (
-            <UserRow
-              id={id}
-              key={id}
-              avatar={avatar}
-              email={email}
-              name={name}
-              userRole={userRole}
-              joined={joined}
-            />
-          ))}
+          {users.map(async ({ id, avatar, email, name, userRole, joined }) => {
+            const role: RoleModel = await getRoleById(userRole);
+
+            return (
+              <UserRow
+                user={{
+                  id,
+                  avatar,
+                  email,
+                  name,
+                  joined,
+                  userRole,
+                }}
+                key={id}
+                userRole={role.name}
+              />
+            );
+          })}
         </tbody>
       </table>
 

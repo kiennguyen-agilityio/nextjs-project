@@ -4,7 +4,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import Dropdown from '@/components/common/Dropdown';
 
 // mocks
-import { categoryOptions } from '@/mocks';
+import { roleOptions } from '@/mocks';
 
 const meta = {
   title: 'Components/Dropdown',
@@ -21,6 +21,6 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     label: 'Dropdown Options',
-    options: categoryOptions,
+    options: roleOptions,
   },
 };

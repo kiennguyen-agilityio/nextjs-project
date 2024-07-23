@@ -1,9 +1,9 @@
 import { RoleModel } from '@/models/RoleModel';
+import { SelectType } from '@/types/SelectType';
 
-export const categoryOptions = [
-  { value: 'option1', label: 'Option 1' },
-  { value: 'option2', label: 'Option 2' },
-  { value: 'option3', label: 'Option 3' },
+export const roleOptions: SelectType[] = [
+  { id: '1', label: 'Option 1' },
+  { id: '2', label: 'Option 2' },
 ];
 
 export const listCategory = [

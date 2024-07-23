@@ -46,25 +46,30 @@ exports[`UserRow should render all the content 1`] = `
         <td
           class="w-full sm:w-1/12"
         >
-          <button
-            class="text-gray-500"
-            data-testid="triple-dot"
+          <div
+            class="relative"
           >
-            <svg
-              class="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
+            <button
+              aria-label="More options"
+              class="text-gray-500 p-1 rounded-full hover:bg-gray-200"
+              data-testid="triple-dot"
             >
-              <path
-                d="M5 12h.01M12 12h.01M19 12h.01"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="4"
-              />
-            </svg>
-          </button>
+              <svg
+                class="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5 12h.01M12 12h.01M19 12h.01"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="4"
+                />
+              </svg>
+            </button>
+          </div>
         </td>
       </tr>
     </tbody>
