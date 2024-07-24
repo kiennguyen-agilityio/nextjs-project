@@ -40,6 +40,7 @@ const Page = async ({ params }: PageProps) => {
     return (
       <div className="p-4">
         <UserForm
+          id={id}
           user={user}
           roleName={roleName}
           roleOptions={roleOptions}
