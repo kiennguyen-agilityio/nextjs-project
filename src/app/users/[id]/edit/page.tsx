@@ -20,11 +20,19 @@ interface PageProps {
   };
 }
 
-export const metadata: Metadata = {
-  title: 'User Detail',
+export const generateMetadata = async ({
+  params,
+}: {
+  params: { id: string };
+}): Promise<Metadata> => {
+  const userName = await getUserById(params.id);
+
+  return {
+    title: userName.name,
+  };
 };
 
-const Page = async ({ params }: PageProps) => {
+const UserDetailPage = async ({ params }: PageProps) => {
   const { id } = params;
 
   try {
@@ -52,4 +60,4 @@ const Page = async ({ params }: PageProps) => {
   }
 };
 
-export default Page;
+export default UserDetailPage;
