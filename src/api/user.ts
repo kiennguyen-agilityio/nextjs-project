@@ -82,3 +82,30 @@ export const updateUserApi = async (
     redirect(LINKS[1].href);
   }
 };
+
+export const deleteUserApi = async (id: string) => {
+  const USER_DELETE_URL = `${process.env.API_URL}/${API_ENDPOINT.USER_LIST}/${id}`;
+
+  try {
+    const res = await fetch(USER_DELETE_URL, {
+      method: 'DELETE',
+      cache: 'no-store',
+    });
+
+    const result = await res.json();
+
+    if (!res.ok) {
+      return { message: result.message || 'Failed to delete user.' };
+    }
+
+    return result;
+  } catch (error) {
+    return {
+      message:
+        (error as Error).message ||
+        'An error occurred while deleting the user.',
+    };
+  } finally {
+    redirect(LINKS[1].href);
+  }
+};
