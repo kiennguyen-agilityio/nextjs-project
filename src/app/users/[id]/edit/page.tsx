@@ -53,6 +53,7 @@ const UserDetailPage = async ({ params }: PageProps) => {
           roleName={roleName}
           roleOptions={roleOptions}
           selectedRole={roleName}
+          userRoleId={role.id.toString()}
         />
       </div>
     );
