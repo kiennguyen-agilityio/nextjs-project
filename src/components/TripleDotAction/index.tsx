@@ -12,6 +12,7 @@ interface DropdownMenuProps {
   link: string;
   toggleDropdown: () => void;
   onBlur: () => void;
+  onDelete: () => void;
 }
 
 const TripleDotActions = ({
@@ -19,6 +20,7 @@ const TripleDotActions = ({
   isDropdownOpen,
   toggleDropdown,
   onBlur,
+  onDelete,
 }: DropdownMenuProps) => {
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -60,6 +62,7 @@ const TripleDotActions = ({
                 href={link}
                 className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                 onClick={handleDropdownClose}
+                data-testid="edit-link"
               >
                 <EditIcon />
               </Link>
@@ -67,9 +70,8 @@ const TripleDotActions = ({
 
             <li>
               <button
-                onClick={() => {
-                  handleDropdownClose();
-                }}
+                data-testid="delete-button"
+                onClick={onDelete}
                 className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left"
               >
                 <TrashIcon />

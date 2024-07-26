@@ -6,6 +6,9 @@ import { useState } from 'react';
 import { UserModel } from '@/models/UserModel';
 import TripleDotActions from '@/components/TripleDotAction';
 
+// api
+import { deleteUserApi } from '@/api/user';
+
 // components
 
 type UserRowProps = {
@@ -21,6 +24,17 @@ const UserRow = ({ user, userRole }: UserRowProps) => {
   const handleOnBlur = () => setDropdownOpen(false);
 
   const { id, name, email, avatar, joined } = user;
+
+  // TODO: handle error later
+  const handleOnDelete = async (id: string) => {
+    const result = await deleteUserApi(id);
+
+    if (result?.message) {
+      console.error('Failed to delete user:', result.message);
+    } else {
+      console.log('User deleted successfully');
+    }
+  };
 
   return (
     <tr className="flex flex-col sm:flex-row items-start sm:items-center sm:gap-10 pr-8 md:pr-0 justify-between p-0 sm:p-4 border-b border-gray-200 hover:bg-gray-100 transition-colors duration-200 ease-in-out">
@@ -47,6 +61,7 @@ const UserRow = ({ user, userRole }: UserRowProps) => {
           isDropdownOpen={isDropdownOpen}
           toggleDropdown={toggleDropdown}
           onBlur={handleOnBlur}
+          onDelete={() => handleOnDelete(id)}
         />
       </td>
     </tr>
