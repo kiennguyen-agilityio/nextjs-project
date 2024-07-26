@@ -10,6 +10,7 @@ const Category = () => (
       {listCategory.map(({ id, label, options = [] }) => (
         <th key={id} className="text-left mb-4 sm:mb-0">
           <Dropdown
+            value={id}
             label={label}
             options={options.map((option) => ({ id: option.value, ...option }))}
           />

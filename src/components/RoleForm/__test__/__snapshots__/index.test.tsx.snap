@@ -36,7 +36,6 @@ exports[`renders user form 1`] = `
           id="title"
           name="title"
           type="role"
-          value=""
         />
       </div>
     </div>
@@ -59,7 +58,7 @@ exports[`renders user form 1`] = `
       class="flex justify-end space-x-2"
     >
       <button
-        class="flex items-center rounded p-2 border border-gray-200 dark:border-gray-700 hover:bg-gray-100 hover:dark:bg-gray-800 disabled:opacity-40 px-4 py-2 border rounded-md"
+        class="flex items-center rounded p-2 border border-gray-200 dark:border-gray-700 hover:bg-gray-100 hover:opacity-80 px-4 py-2 border rounded-md"
         type="button"
       >
         Cancel

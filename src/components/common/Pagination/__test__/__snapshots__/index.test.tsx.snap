@@ -37,7 +37,7 @@ exports[`Pagination Component matches snapshot 1`] = `
         </span>
       </div>
       <button
-        class="flex items-center rounded p-2 border border-gray-200 dark:border-gray-700 hover:bg-gray-100 hover:dark:bg-gray-800 disabled:opacity-40 flex h-8 w-8 items-center justify-center rounded border-none pointer-events-none text-gray-300 mr-2"
+        class="flex items-center rounded p-2 border border-gray-200 dark:border-gray-700 hover:bg-gray-100 hover:opacity-80 flex h-8 w-8 items-center justify-center rounded border-none pointer-events-none text-gray-300 mr-2"
         type="button"
       >
         <svg

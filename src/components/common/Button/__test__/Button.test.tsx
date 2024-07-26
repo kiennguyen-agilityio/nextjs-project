@@ -22,7 +22,7 @@ describe('Button component', () => {
   test('applies the correct variant classes', () => {
     render(<Button variant="success">Click me</Button>);
     expect(screen.getByText('Click me')).toHaveClass(
-      'bg-green-600 text-white hover:bg-green-700 disabled:bg-green-400',
+      'bg-green-600 text-white hover:bg-green-700 hover:opacity-80',
     );
   });
 

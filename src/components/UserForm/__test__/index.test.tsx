@@ -6,6 +6,12 @@ import UserForm from '@/components/UserForm';
 // mocks
 import { roleOptions } from '@/mocks';
 
+jest.mock('react-dom', () => ({
+  ...jest.requireActual('react-dom'),
+  useFormState: () => [{}, () => {}],
+  useFormStatus: () => ({ pending: false }),
+}));
+
 describe('UserForm', () => {
   const user = {
     name: 'name 1',
@@ -25,6 +31,8 @@ describe('UserForm', () => {
         roleName={roleName}
         roleOptions={roleOptions}
         selectedRole={roleName}
+        id={user.id}
+        userRoleId={user.userRole}
       />,
     );
     expect(asFragment()).toMatchSnapshot();
