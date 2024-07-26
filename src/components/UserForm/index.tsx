@@ -27,7 +27,8 @@ import { UserState, validateUser } from '@/services/validateUser';
 import { uploadImage } from '@/api/image';
 
 // constants
-import { MAX_SIZE, REGEX } from '@/constants/regex';
+import { REGEX } from '@/constants/regex';
+import { MAX_SIZE } from '@/constants/sizeImg';
 
 interface UserFormProps {
   id: string;

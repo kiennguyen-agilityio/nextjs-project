@@ -4,16 +4,21 @@ exports[`renders dropdown button with label and options 1`] = `
 <DocumentFragment>
   <select
     class="inline-flex justify-center w-full rounded-3xl px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-200 focus:outline-none max-w-32 undefined"
+    name="userRole"
   >
     <option
-      value=""
+      value="1"
     >
       Dropdown
     </option>
-    <option>
+    <option
+      value="1"
+    >
       Option 1
     </option>
-    <option>
+    <option
+      value="2"
+    >
       Option 2
     </option>
   </select>

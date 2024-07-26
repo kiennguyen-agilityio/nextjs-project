@@ -22,5 +22,6 @@ export const Default: Story = {
   args: {
     label: 'Dropdown Options',
     options: roleOptions,
+    value: 'default',
   },
 };
