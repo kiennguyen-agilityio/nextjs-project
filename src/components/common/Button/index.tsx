@@ -39,28 +39,22 @@ export const Button = ({
 
   switch (variant) {
     case 'primary':
-      stateClass =
-        'bg-[#4270ec] text-white hover:bg-blue-600 disabled:bg-blue-300';
+      stateClass = `bg-[#4270ec] text-white hover:bg-blue-600 ${disabled ? 'hover:cursor-not-allowed hover:opacity-70' : `hover:opacity-80`}`;
       break;
     case 'secondary':
-      stateClass =
-        'bg-white text-[#62656e] hover:bg-gray-300 disabled:bg-gray-300';
+      stateClass = `bg-white text-[#62656e] hover:bg-gray-300 ${disabled ? 'hover:cursor-not-allowed hover:opacity-70' : `hover:opacity-80`}`;
       break;
     case 'success':
-      stateClass =
-        'bg-green-600 text-white hover:bg-green-700 disabled:bg-green-400';
+      stateClass = `bg-green-600 text-white hover:bg-green-700 ${disabled ? 'hover:cursor-not-allowed hover:opacity-70' : `hover:opacity-80`}`;
       break;
     case 'warning':
-      stateClass =
-        'bg-amber-400 text-black hover:bg-amber-500 disabled:bg-amber-300';
+      stateClass = `bg-amber-400 text-black hover:bg-amber-500 ${disabled ? 'hover:cursor-not-allowed hover:opacity-70' : `hover:opacity-80`}`;
       break;
     case 'error':
-      stateClass =
-        'bg-rose-500 text-white hover:bg-rose-600 disabled:bg-rose-300';
+      stateClass = `bg-rose-500 text-white hover:bg-rose-600 ${disabled ? 'hover:cursor-not-allowed hover:opacity-70' : `hover:opacity-80`}`;
       break;
     case 'outline':
-      stateClass =
-        'border border-gray-200 dark:border-gray-700 hover:bg-gray-100 hover:dark:bg-gray-800 disabled:opacity-40';
+      stateClass = `border border-gray-200 dark:border-gray-700 hover:bg-gray-100 ${disabled ? 'hover:cursor-not-allowed hover:opacity-70' : `hover:opacity-80`}`;
       break;
 
     default:

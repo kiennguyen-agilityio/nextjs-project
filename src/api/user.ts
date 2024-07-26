@@ -45,9 +45,15 @@ export const getUserById = async (id: string) => {
 
 export const updateUserApi = async (
   id: string,
-  user: { name: string; email: string; userRole: string; joined: string },
+  user: {
+    name: string;
+    email: string;
+    userRole: string;
+    joined: string;
+    avatar?: string;
+  },
 ) => {
-  const USER_UPDATE_URL = `${process.env.BASE_URL}/${API_ENDPOINT.USER_LIST}/${id}`;
+  const USER_UPDATE_URL = `${process.env.API_URL}/${API_ENDPOINT.USER_LIST}/${id}`;
 
   try {
     const res = await fetch(USER_UPDATE_URL, {

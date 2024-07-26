@@ -20,6 +20,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
+    id: 'c4ca4238a0b923820dcc509a6f75849b',
     user: {
       name: 'name 1',
       avatar: 'https://s.net.vn/Ur2Q',
