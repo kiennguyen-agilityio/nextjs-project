@@ -8,12 +8,21 @@ import { LINKS } from '@/constants/router';
 // models
 import { UserModel } from '@/models/UserModel';
 
-export const getUserList = async (page: number, limit: number) => {
-  const USER_LIST_URL = `${process.env.API_URL}/${API_ENDPOINT.USER_LIST}?page=${page}&limit=${limit}&sortBy=createdAt&order=desc`;
+export const getUserList = async (
+  page: number,
+  limit: number,
+  sortBy: string = 'createdAt',
+  order: string = 'desc',
+) => {
+  const USER_LIST_URL = `${process.env.API_URL}/${API_ENDPOINT.USER_LIST}?page=${page}&limit=${limit}&sortBy=${sortBy}&order=${order}`;
 
   const res = await fetch(USER_LIST_URL, {
     cache: 'no-store',
   });
+
+  if (!res.ok) {
+    throw new Error('Failed to fetch user list');
+  }
 
   const data: UserModel[] = await res.json();
 
