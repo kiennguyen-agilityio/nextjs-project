@@ -3,7 +3,7 @@ import { redirect } from 'next/navigation';
 
 // constants
 import { API_ENDPOINT } from '@/constants/api-endpoint';
-import { LINKS } from '@/constants/router';
+import { ROUTER } from '@/constants/router';
 
 // models
 import { UserModel } from '@/models/UserModel';
@@ -88,7 +88,7 @@ export const updateUserApi = async (
         'An error occurred while updating the user.',
     };
   } finally {
-    redirect(LINKS[1].href);
+    redirect(ROUTER.USERS);
   }
 };
 
@@ -115,7 +115,7 @@ export const deleteUserApi = async (id: string) => {
         'An error occurred while deleting the user.',
     };
   } finally {
-    redirect(LINKS[1].href);
+    redirect(ROUTER.USERS);
   }
 };
 
@@ -151,7 +151,7 @@ export const addUserApi = async (user: {
         (error as Error).message || 'An error occurred while adding the user.',
     };
   } finally {
-    redirect(LINKS[1].href);
+    redirect(ROUTER.USERS);
   }
 };
 
