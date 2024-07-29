@@ -10,9 +10,9 @@ exports[`Pagination Component matches snapshot 1`] = `
     >
       Displaying 
       <strong>
-        2
+        4
       </strong>
-       out of 50
+       out of 25
     </div>
     <div
       class="flex items-center"
@@ -33,7 +33,7 @@ exports[`Pagination Component matches snapshot 1`] = `
         <span
           class="text-sm font-medium"
         >
-          2
+          4
         </span>
       </div>
       <button
@@ -57,7 +57,7 @@ exports[`Pagination Component matches snapshot 1`] = `
       </button>
       <a
         class="flex h-8 w-8 items-center justify-center rounded border-none hover:bg-gray-200 ml-2"
-        href="/test?page=2&limit=2"
+        href="/test?page=2&limit=4"
       >
         <svg
           class="w-4 h-4"
