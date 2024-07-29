@@ -9,7 +9,7 @@ import { LINKS } from '@/constants/router';
 import { UserModel } from '@/models/UserModel';
 
 export const getUserList = async (page: number, limit: number) => {
-  const USER_LIST_URL = `${process.env.API_URL}/${API_ENDPOINT.USER_LIST}?page=${page}&limit=${limit}`;
+  const USER_LIST_URL = `${process.env.API_URL}/${API_ENDPOINT.USER_LIST}?page=${page}&limit=${limit}&sortBy=createdAt&order=desc`;
 
   const res = await fetch(USER_LIST_URL, {
     cache: 'no-store',
@@ -108,4 +108,52 @@ export const deleteUserApi = async (id: string) => {
   } finally {
     redirect(LINKS[1].href);
   }
+};
+
+export const addUserApi = async (user: {
+  name: string;
+  email: string;
+  userRole: string;
+  joined: string;
+  avatar?: string;
+}) => {
+  const USER_ADD_URL = `${process.env.API_URL}/${API_ENDPOINT.USER_LIST}`;
+
+  try {
+    const res = await fetch(USER_ADD_URL, {
+      method: 'POST',
+      cache: 'no-store',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ ...user, createdAt: new Date() }),
+    });
+
+    const result = await res.json();
+
+    if (!res.ok) {
+      return { message: result.message || 'Failed to add user.' };
+    }
+
+    return result;
+  } catch (error) {
+    return {
+      message:
+        (error as Error).message || 'An error occurred while adding the user.',
+    };
+  } finally {
+    redirect(LINKS[1].href);
+  }
+};
+
+export const getUsers = async (): Promise<UserModel[]> => {
+  const USER_LIST_URL = `${process.env.API_URL}/${API_ENDPOINT.USER_LIST}`;
+
+  const res = await fetch(USER_LIST_URL, {
+    cache: 'no-store',
+  });
+
+  const data: UserModel[] = await res.json();
+
+  return data;
 };
