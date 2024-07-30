@@ -23,12 +23,18 @@ type UserPageProps = {
   searchParams: {
     page: number;
     limit: number;
+    sortBy: string; // Added for sorting
+    order: string; // Added for ordering
+    role: string;
   };
 };
 
 const UserPage = ({ searchParams }: UserPageProps) => {
   const page = Number(searchParams.page) || 1;
   const limit = Number(searchParams.limit) || DEFAULT_LIMIT;
+  const sortBy = searchParams.sortBy || 'createdAt'; // Default sorting
+  const order = searchParams.order || 'desc'; // Default ordering
+  const role = searchParams.role || '';
 
   return (
     <main>
@@ -48,7 +54,13 @@ const UserPage = ({ searchParams }: UserPageProps) => {
           </Link>
         </div>
         <div>
-          <UserList limit={limit} page={page} />
+          <UserList
+            limit={limit}
+            page={page}
+            sortBy={sortBy}
+            order={order}
+            role={role}
+          />
         </div>
       </Suspense>
     </main>

@@ -13,11 +13,20 @@ import { RoleModel } from '@/models/RoleModel';
 type UserListProps = {
   page: number;
   limit: number;
+  sortBy: string;
+  order: string;
+  role: string;
 };
 
-const UserList = async ({ page, limit }: UserListProps) => {
+const UserList = async ({
+  page,
+  limit,
+  sortBy,
+  order,
+  role,
+}: UserListProps) => {
   const totalUsers = await getTotalUsers();
-  const users = await getUserList(page, limit);
+  const users = await getUserList(page, limit, sortBy, order, role);
 
   return (
     <>
