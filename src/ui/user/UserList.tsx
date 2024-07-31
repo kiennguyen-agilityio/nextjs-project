@@ -13,16 +13,27 @@ import { RoleModel } from '@/models/RoleModel';
 type UserListProps = {
   page: number;
   limit: number;
+  sortBy: string;
+  order: string;
+  roles: RoleModel[];
+  userRole: string;
 };
 
-const UserList = async ({ page, limit }: UserListProps) => {
+const UserList = async ({
+  page,
+  limit,
+  sortBy,
+  order,
+  roles,
+  userRole,
+}: UserListProps) => {
   const totalUsers = await getTotalUsers();
-  const users = await getUserList(page, limit);
+  const users = await getUserList(page, limit, sortBy, order, userRole);
 
   return (
     <>
       <table className="w-full table-auto">
-        <Category />
+        <Category roles={roles} />
         <tbody>
           {users.map(async ({ id, avatar, email, name, userRole, joined }) => {
             const role: RoleModel = await getRoleById(userRole);

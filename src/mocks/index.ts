@@ -10,30 +10,31 @@ export const listCategory = [
   {
     id: '1',
     label: 'Email',
-    options: [
-      { value: 'email1', label: 'email1@example.com' },
-      { value: 'email2', label: 'email2@example.com' },
-    ],
+    name: '',
   },
   {
     id: '2',
     label: 'Full Name',
     options: [
-      { value: 'john_doe', label: 'John Doe' },
-      { value: 'jane_doe', label: 'Jane Doe' },
+      { value: 'asc', label: 'Asc' },
+      { value: 'desc', label: 'Desc' },
     ],
+    name: 'name',
   },
   {
     id: '3',
     label: 'Role',
+    options: [],
+    name: 'userRole',
   },
   {
     id: '4',
     label: 'Joined',
     options: [
-      { value: '2021', label: '2021' },
-      { value: '2022', label: '2022' },
+      { value: 'asc', label: 'Asc' },
+      { value: 'desc', label: 'Desc' },
     ],
+    name: 'joined',
   },
 ];
 

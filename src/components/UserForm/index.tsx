@@ -2,6 +2,7 @@
 import { ChangeEvent, useCallback, useState } from 'react';
 import { useFormState } from 'react-dom';
 import Image from 'next/image';
+import Link from 'next/link';
 
 // models
 import { UserModel } from '@/models/UserModel';
@@ -21,7 +22,7 @@ import { formatDate } from '@/utils/formatDate';
 import { SelectType } from '@/types/SelectType';
 
 // services
-import { UserState, validateUser } from '@/services/validateUser';
+import { createUser, UserState, validateUser } from '@/services/validateUser';
 
 // apis
 import { uploadImage } from '@/api/image';
@@ -31,21 +32,21 @@ import { REGEX } from '@/constants/regex';
 import { MAX_SIZE } from '@/constants/sizeImg';
 
 interface UserFormProps {
-  id: string;
+  id?: string;
   user?: UserModel;
-  roleName: string;
-  roleOptions: SelectType[];
-  selectedRole: string;
-  userRoleId: string;
+  roleName?: string;
+  roleOptions?: SelectType[];
+  selectedRole?: string;
+  userRoleId?: string;
 }
 
 const UserForm = ({
   id,
   user,
   roleName,
-  roleOptions,
-  selectedRole,
-  userRoleId,
+  roleOptions = [],
+  selectedRole = '',
+  userRoleId = '',
 }: UserFormProps) => {
   const [welcomeMessage, setWelcomeMessage] = useState(
     "Welcome aboard! We are excited you are here, and we look forward to working with you. We know with your skills and experience you're a great asset to our department. If you have any questions during your first week, please contact me at any time.",
@@ -54,7 +55,7 @@ const UserForm = ({
   const [initialFormData] = useState({
     name: user?.name || '',
     email: user?.email || '',
-    joined: user?.joined ? formatDate(user.joined) : '',
+    joined: user?.joined ? formatDate(user.joined) : new Date().toISOString(),
     userRole: selectedRole || '',
     avatar: user?.avatar || '',
   });
@@ -84,9 +85,12 @@ const UserForm = ({
   const formattedDate = formatDate(joinedDate);
   const initialState: UserState = { message: null, errors: {} };
 
-  const updateUSerWithId = validateUser.bind(null, id);
+  const updateUSerWithId = validateUser.bind(null, id || '');
 
-  const [state, dispatch] = useFormState(updateUSerWithId, initialState);
+  const [state, dispatch] = useFormState(
+    id ? updateUSerWithId : createUser,
+    initialState,
+  );
 
   const [_, setPreviewURL] = useState<string>('');
 
@@ -226,6 +230,7 @@ const UserForm = ({
                 handleInputChange('avatar', value),
               )}
               aria-describedby="avatar-error"
+              required
             />
           </div>
         </div>
@@ -275,10 +280,15 @@ const UserForm = ({
         />
       </div>
       <div className="flex justify-end space-x-2">
-        <Button customClass="px-4 py-2 border rounded-md" variant="outline">
-          Cancel
-        </Button>
-        <SubmitButton label="Update User" disabled={!hasFormChanged()} />
+        <Link href="/users">
+          <Button customClass="px-4 py-2 border rounded-md" variant="outline">
+            Cancel
+          </Button>
+        </Link>
+        <SubmitButton
+          label={id ? 'Update User' : 'Create User'}
+          disabled={!hasFormChanged()}
+        />
       </div>
     </form>
   );

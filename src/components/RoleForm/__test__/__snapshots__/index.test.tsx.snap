@@ -36,6 +36,7 @@ exports[`renders user form 1`] = `
           id="title"
           name="title"
           type="role"
+          value=""
         />
       </div>
     </div>
