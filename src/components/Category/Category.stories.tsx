@@ -3,6 +3,9 @@ import type { Meta, StoryObj } from '@storybook/react';
 // components
 import Category from '@/components/Category';
 
+// mocks
+import { roles } from '@/mocks';
+
 const meta = {
   title: 'Components/Category',
   component: Category,
@@ -15,4 +18,8 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
+export const Default: Story = {
+  args: {
+    roles: roles,
+  },
+};

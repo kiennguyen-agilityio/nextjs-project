@@ -5,4 +5,5 @@ export interface UserModel {
   userRole: string;
   avatar: string;
   joined: Date;
+  createAt?: Date;
 }

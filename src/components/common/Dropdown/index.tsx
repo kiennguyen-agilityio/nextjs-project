@@ -1,4 +1,5 @@
 'use client';
+
 import { SelectType } from '@/types/SelectType';
 
 interface DropdownProps {
