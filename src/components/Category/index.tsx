@@ -6,6 +6,8 @@ import { listCategory } from '@/mocks';
 
 // components
 import Dropdown from '@/components/common/Dropdown';
+
+// models
 import { RoleModel } from '@/models/RoleModel';
 
 interface CategoryProps {
@@ -33,7 +35,7 @@ const Category = ({ roles }: CategoryProps) => {
 
   return (
     <thead>
-      <tr className="flex items-center justify-between pl-0 md:pl-0 pr-8 md:pr-12 border-b border-gray-200">
+      <tr className="flex items-center justify-between pl-9 md:pl-16 pr-14 md:pr-14 border-b border-gray-200 pb-6">
         {listCategory.map(({ id, label, options = [], name }) => (
           <th key={id} className="text-left mb-4 sm:mb-0">
             <Dropdown

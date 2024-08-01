@@ -37,7 +37,7 @@ const UserRow = ({ user, userRole }: UserRowProps) => {
   };
 
   return (
-    <tr className="flex flex-col sm:flex-row items-start sm:items-center sm:gap-10 pr-8 md:pr-0 justify-between p-0 sm:p-4 border-b border-gray-200 hover:bg-gray-100 transition-colors duration-200 ease-in-out">
+    <tr className="flex flex-col sm:flex-row items-start sm:items-center sm:gap-10 pr-8 md:pr-0 justify-between p-0 sm:p-8 border-b border-gray-200 hover:bg-gray-100 transition-colors duration-200 ease-in-out">
       <td className="flex items-center w-full mb-4 sm:mb-0">
         <Image
           src={avatar}
