@@ -9,6 +9,10 @@ import RoleList from '@/ui/role/RoleList';
 
 // components
 import RoleSkeleton from '@/components/Skeleton/RoleSkeleTon';
+import Tablist from '@/components/TabList';
+
+// icons
+import { PlusIcon } from '@/icons/PlusIcon';
 
 export const metadata: Metadata = {
   title: 'Role Listing',
@@ -17,17 +21,25 @@ export const metadata: Metadata = {
 const RolePage = () => {
   return (
     <div className="relative shadow-lg sm:rounded-lg">
-      <h1 className="text-2xl font-semibold text-center mb-8 bg-gray-500">
-        Roles
-      </h1>
-      <Suspense fallback={<RoleSkeleton />}>
-        <RoleList />
-      </Suspense>
-      <div className="flex justify-end mt-4">
-        <Button variant="primary" type="button" ariaLabel="Add New Role">
+      <div className="flex justify-between items-center mb-4">
+        <h1 className="font-bold text-lg">Company Role</h1>
+
+        <Button
+          variant="primary"
+          type="button"
+          ariaLabel="Add New User"
+          customClass="ml-4 rounded-2xl"
+          startIcon={<PlusIcon />}
+        >
           Add New Role
         </Button>
       </div>
+
+      <Tablist />
+
+      <Suspense fallback={<RoleSkeleton />}>
+        <RoleList />
+      </Suspense>
     </div>
   );
 };

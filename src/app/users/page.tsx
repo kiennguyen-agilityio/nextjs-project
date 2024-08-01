@@ -11,6 +11,7 @@ import { DEFAULT_LIMIT } from '@/constants/defaultValue';
 // components
 import UserSkeleton from '@/components/Skeleton/UserSkeleton';
 import { Button } from '@/components/common/Button';
+import Tablist from '@/components/TabList';
 
 // icons
 import { PlusIcon } from '@/icons/PlusIcon';
@@ -47,6 +48,7 @@ const UserPage = async ({ searchParams }: UserPageProps) => {
     <main>
       <Suspense fallback={<UserSkeleton />}>
         <div className="flex justify-between items-center mb-4">
+          <h1 className="font-bold text-lg">Company Users</h1>
           <div className="flex-grow" />
           <Link href={ROUTER.USERS + '/create'}>
             <Button
@@ -60,6 +62,8 @@ const UserPage = async ({ searchParams }: UserPageProps) => {
             </Button>
           </Link>
         </div>
+        <Tablist />
+
         <div>
           <UserList
             limit={limit}
