@@ -64,16 +64,14 @@ const UserPage = async ({ searchParams }: UserPageProps) => {
         </div>
         <Tablist />
 
-        <div>
-          <UserList
-            limit={limit}
-            page={page}
-            sortBy={sortBy}
-            order={order}
-            roles={roles}
-            userRole={userRole}
-          />
-        </div>
+        <UserList
+          limit={limit}
+          page={page}
+          sortBy={sortBy}
+          order={order}
+          roles={roles}
+          userRole={userRole}
+        />
       </Suspense>
     </main>
   );

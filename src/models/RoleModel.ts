@@ -1,5 +1,6 @@
 export type RoleModel = {
-  id: number;
+  id: string;
   name: string;
   description: string;
+  createAt?: Date;
 };
