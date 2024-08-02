@@ -87,8 +87,6 @@ export const updateUserApi = async (
         (error as Error).message ||
         'An error occurred while updating the user.',
     };
-  } finally {
-    redirect(ROUTER.USERS);
   }
 };
 

@@ -8,8 +8,9 @@ import TripleDotActions from '@/components/TripleDotAction';
 
 // api
 import { deleteUserApi } from '@/api/user';
-
-// components
+import Toast from '../common/Toast';
+import { useNotification } from '@/hooks/useNotification';
+import ConfirmationModal from '../common/ConfirmModal';
 
 type UserRowProps = {
   user: UserModel;
@@ -18,6 +19,17 @@ type UserRowProps = {
 
 const UserRow = ({ user, userRole }: UserRowProps) => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
+  const {
+    isModalOpen,
+    toastMessage,
+    toastType,
+    openModal,
+    closeModal,
+    confirmAction,
+    showToast,
+    closeToast,
+    modalMessage,
+  } = useNotification();
 
   const toggleDropdown = () => setDropdownOpen(!isDropdownOpen);
 
@@ -25,14 +37,20 @@ const UserRow = ({ user, userRole }: UserRowProps) => {
 
   const { id, name, email, avatar, joined } = user;
 
-  // TODO: handle error later
-  const handleOnDelete = async (id: string) => {
+  const handleOnDelete = () => {
+    openModal('Are you sure you want to delete this user?', async () => {
+      await deleteUser(id);
+    });
+  };
+
+  const deleteUser = async (id: string) => {
+    closeModal();
     const result = await deleteUserApi(id);
 
     if (result?.message) {
-      console.error('Failed to delete user:', result.message);
+      showToast(`Failed to delete user: ${result.message}`, 'error');
     } else {
-      console.log('User deleted successfully');
+      showToast('User deleted successfully', 'success');
     }
   };
 
@@ -61,9 +79,20 @@ const UserRow = ({ user, userRole }: UserRowProps) => {
           isDropdownOpen={isDropdownOpen}
           toggleDropdown={toggleDropdown}
           onBlur={handleOnBlur}
-          onDelete={() => handleOnDelete(id)}
+          onDelete={handleOnDelete}
         />
       </td>
+
+      <ConfirmationModal
+        isOpen={isModalOpen}
+        onConfirm={confirmAction}
+        onCancel={closeModal}
+        message={modalMessage}
+      />
+
+      {toastMessage && (
+        <Toast message={toastMessage} type={toastType} onClose={closeToast} />
+      )}
     </tr>
   );
 };
