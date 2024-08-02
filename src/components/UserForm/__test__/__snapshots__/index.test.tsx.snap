@@ -123,7 +123,6 @@ exports[`UserForm renders UserForm correctly 1`] = `
             aria-describedby="avatar-error"
             class="absolute inset-0 opacity-0 cursor-pointer"
             name="avatar"
-            required=""
             type="file"
           />
         </div>
@@ -143,7 +142,7 @@ exports[`UserForm renders UserForm correctly 1`] = `
         Select Role
       </label>
       <select
-        class="inline-flex justify-center w-full rounded-3xl px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-200 focus:outline-none max-w-32 mt-1 p-2 min-w-full rounded-md border py-4"
+        class="inline-flex justify-center w-full rounded-3xl px-2 py-1 text-sm font-medium text-gray-700 cursor-pointer focus:outline-none max-w-32 mt-1 p-2 min-w-full rounded-md border py-4"
         name="userRole"
       >
         <option
