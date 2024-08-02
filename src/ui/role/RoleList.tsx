@@ -46,6 +46,7 @@ const RoleList = ({ roleList }: RoleListProps) => {
           <th className="py-2 px-4 border-b">ID</th>
           <th className="py-2 px-4 border-b">Name</th>
           <th className="py-2 px-4 border-b">Description</th>
+          <th className="py-2 px-4 border-b" />
         </tr>
       </thead>
       <tbody>
@@ -53,7 +54,9 @@ const RoleList = ({ roleList }: RoleListProps) => {
           <tr key={id} className="text-center hover:bg-gray-100 ">
             <td className="py-2 px-4 border-b">{index + 1}</td>
             <td className="py-2 px-4 border-b">{name}</td>
-            <td className="py-2 px-4 border-b">{description}</td>
+            <td className="py-2 px-4 border-b whitespace-normal break-words">
+              {description}
+            </td>
             <td className="py-2 px-4 border-b w-full sm:w-1/12">
               <TripleDotActions
                 link={ROUTER.ROLES + `/${id}/edit`}
