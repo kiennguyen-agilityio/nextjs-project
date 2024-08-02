@@ -230,7 +230,6 @@ const UserForm = ({
                 handleInputChange('avatar', value),
               )}
               aria-describedby="avatar-error"
-              required
             />
           </div>
         </div>

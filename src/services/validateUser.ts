@@ -8,6 +8,9 @@ import { extractFormData } from '@/utils/form';
 import { addUserApi, updateUserApi } from '@/api/user';
 import { uploadImage } from '@/api/image';
 
+// constants
+import { DEFAULT_AVATAR_URL } from '@/constants/defaultValue';
+
 export type UserState = {
   errors?: {
     name?: string[];
@@ -112,10 +115,12 @@ export const createUser = async (_: UserState, formData: FormData) => {
         };
       }
     } else {
-      delete extractedUser.avatar; // Ensure avatar is not included if file size is 0
+      // Set default avatar URL if the file size is 0
+      extractedUser.avatar = DEFAULT_AVATAR_URL;
     }
   } else {
-    delete extractedUser.avatar; // Ensure avatar is not included if not provided
+    // Set default avatar URL if no file is provided
+    extractedUser.avatar = DEFAULT_AVATAR_URL;
   }
 
   // Validate form fields using Zod
