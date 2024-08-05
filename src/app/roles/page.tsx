@@ -38,7 +38,7 @@ const RolePage = async () => {
             customClass="ml-4 rounded-2xl"
             startIcon={<PlusIcon />}
           >
-            Add New User
+            Add New Role
           </Button>
         </Link>
       </div>
