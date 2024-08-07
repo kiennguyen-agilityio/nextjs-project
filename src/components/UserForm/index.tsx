@@ -22,7 +22,7 @@ import { formatDate } from '@/utils/formatDate';
 import { SelectType } from '@/types/SelectType';
 
 // services
-import { createUser, UserState, validateUser } from '@/services/validateUser';
+import { createUser, UserState, validateUser } from '@/actions/user';
 
 // apis
 import { uploadImage } from '@/api/image';

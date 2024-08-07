@@ -12,7 +12,7 @@ import { SubmitButton } from '@/components/SubmitButton';
 import { RoleModel } from '@/models/RoleModel';
 
 // services
-import { createRole, RoleState, validateRole } from '@/services/validateRole';
+import { createRole, RoleState, validateRole } from '@/actions/role';
 
 // constants
 import { ROUTER } from '@/constants/router';
