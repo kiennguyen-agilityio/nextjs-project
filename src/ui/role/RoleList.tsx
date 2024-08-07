@@ -12,6 +12,9 @@ import { RoleModel } from '@/models/RoleModel';
 // apis
 import { deleteRoleApi } from '@/api/role';
 
+// constants
+import { DEFAULT_ROW_CLASS } from '@/constants/defaultValue';
+
 type RoleListProps = {
   roleList: RoleModel[];
 };
@@ -46,21 +49,21 @@ const RoleList = ({ roleList }: RoleListProps) => {
       <table className="min-w-full bg-white border border-gray-200">
         <thead>
           <tr>
-            <th className="py-2 px-4 border-b">ID</th>
-            <th className="py-2 px-4 border-b">Name</th>
-            <th className="py-2 px-4 border-b">Description</th>
-            <th className="py-2 px-4 border-b">Actions</th>
+            <th className={DEFAULT_ROW_CLASS}>ID</th>
+            <th className={DEFAULT_ROW_CLASS}>Name</th>
+            <th className={DEFAULT_ROW_CLASS}>Description</th>
+            <th className={DEFAULT_ROW_CLASS} />
           </tr>
         </thead>
         <tbody>
           {roleList.map(({ id, name, description }, index) => (
             <tr key={id} className="text-center hover:bg-gray-100">
-              <td className="py-2 px-4 border-b">{index + 1}</td>
-              <td className="py-2 px-4 border-b">{name}</td>
-              <td className="py-2 px-4 border-b">{description}</td>
-              <td className="py-2 px-4 border-b w-full sm:w-1/12">
+              <td className={DEFAULT_ROW_CLASS}>{index + 1}</td>
+              <td className={DEFAULT_ROW_CLASS}>{name}</td>
+              <td className={DEFAULT_ROW_CLASS}>{description}</td>
+              <td className={`${DEFAULT_ROW_CLASS} w-full sm:w-1/12`}>
                 <TripleDotActions
-                  link={ROUTER.ROLES + `/${id}/edit`}
+                  link={`${ROUTER.ROLES}/${id}/edit`}
                   isDropdownOpen={openDropdownId === id}
                   toggleDropdown={() => toggleDropdown(id)}
                   onBlur={handleOnBlur}

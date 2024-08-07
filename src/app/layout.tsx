@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import { ReactNode } from 'react';
-
 import { Inter } from 'next/font/google';
-import Header from '@/layouts/Header';
+
+// components
 import SideNav from '@/components/SideNav';
 
 import './globals.css';
@@ -29,7 +29,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Header />
         <div className="flex h-screen flex-col md:flex-row md:overflow-hidden">
           <div className="w-full flex-none md:w-64">
             <SideNav />

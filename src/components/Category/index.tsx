@@ -34,10 +34,13 @@ const Category = ({ roles }: CategoryProps) => {
   };
 
   return (
-    <thead>
-      <tr className="flex items-center justify-between pl-9 md:pl-8 pr-14 md:pr-14 border-b border-gray-200 pb-6">
+    <thead className="bg-gray-400 text-gray-800 border-b border-gray-300">
+      <tr className="flex items-center justify-between pl-6 pr-8 py-3">
         {listCategory.map(({ id, label, options = [], name }) => (
-          <th key={id} className="text-left mb-4 sm:mb-0">
+          <th
+            key={id}
+            className="text-left font-semibold text-sm sm:text-base px-4 py-2"
+          >
             <Dropdown
               value={id}
               label={label}
@@ -53,14 +56,12 @@ const Category = ({ roles }: CategoryProps) => {
                     }))
               }
               onChange={(value) => {
-                // value name
-
                 createFilterURL(name, value);
               }}
             />
           </th>
         ))}
-        <th className="text-left flex items-center mb-4 sm:mb-0" />
+        <th className="text-left px-4 py-2" />
       </tr>
     </thead>
   );
