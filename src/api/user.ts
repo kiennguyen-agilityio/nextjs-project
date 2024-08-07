@@ -67,7 +67,6 @@ export const updateUserApi = async (
   try {
     const res = await fetch(USER_UPDATE_URL, {
       method: 'PUT',
-      cache: 'no-store',
       headers: {
         'Content-Type': 'application/json',
       },
@@ -77,45 +76,51 @@ export const updateUserApi = async (
     const result = await res.json();
 
     if (!res.ok) {
-      return { message: result.message || 'Failed to update user.' };
+      return {
+        success: false,
+        message: result.message || 'Failed to update user.',
+      };
     }
 
-    return result;
+    return {
+      success: true,
+      message: 'User updated successfully.',
+    };
   } catch (error) {
     return {
+      success: false,
       message:
         (error as Error).message ||
         'An error occurred while updating the user.',
     };
-  } finally {
-    redirect(ROUTER.USERS);
   }
 };
 
 export const deleteUserApi = async (id: string) => {
   const USER_DELETE_URL = `${process.env.API_URL}/${API_ENDPOINT.USER_LIST}/${id}`;
 
+  let success = true;
+  let message = 'User deleted successfully.';
+
   try {
     const res = await fetch(USER_DELETE_URL, {
       method: 'DELETE',
-      cache: 'no-store',
     });
 
     const result = await res.json();
 
     if (!res.ok) {
-      return { message: result.message || 'Failed to delete user.' };
+      success = false;
+      message = result.message || 'Failed to delete user.';
     }
-
-    return result;
   } catch (error) {
-    return {
-      message:
-        (error as Error).message ||
-        'An error occurred while deleting the user.',
-    };
+    success = false;
+    message =
+      (error as Error).message || 'An error occurred while deleting the user.';
   } finally {
-    redirect(ROUTER.USERS);
+    redirect(
+      `${ROUTER.USERS}?success=${success}&message=${encodeURIComponent(message)}`,
+    );
   }
 };
 
@@ -141,17 +146,19 @@ export const addUserApi = async (user: {
     const result = await res.json();
 
     if (!res.ok) {
-      return { message: result.message || 'Failed to add user.' };
+      return {
+        success: false,
+        message: result.message || 'Failed to add user.',
+      };
     }
 
-    return result;
+    return { success: true, ...result };
   } catch (error) {
     return {
+      success: false,
       message:
         (error as Error).message || 'An error occurred while adding the user.',
     };
-  } finally {
-    redirect(ROUTER.USERS);
   }
 };
 

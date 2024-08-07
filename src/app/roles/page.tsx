@@ -29,7 +29,7 @@ const RolePage = async () => {
   return (
     <div className="relative shadow-lg sm:rounded-lg">
       <div className="flex justify-between items-center mb-4">
-        <h1 className="font-bold text-lg">Company Users</h1>
+        <h1 className="font-bold text-lg">Company Roles</h1>
         <Link href={ROUTER.ROLES + '/create'}>
           <Button
             variant="primary"
@@ -38,7 +38,7 @@ const RolePage = async () => {
             customClass="ml-4 rounded-2xl"
             startIcon={<PlusIcon />}
           >
-            Add New User
+            Add New Role
           </Button>
         </Link>
       </div>
