@@ -60,21 +60,22 @@ const TripleDotActions = ({
             <li>
               <Link
                 href={link}
-                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                 onClick={handleDropdownClose}
                 data-testid="edit-link"
               >
                 <EditIcon />
+                <span className="ml-2">Edit</span>
               </Link>
             </li>
-
             <li>
               <button
                 data-testid="delete-button"
                 onClick={onDelete}
-                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left"
+                className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left"
               >
                 <TrashIcon />
+                <span className="ml-2">Delete</span>
               </button>
             </li>
           </ul>

@@ -17,6 +17,9 @@ import { createRole, RoleState, validateRole } from '@/actions/role';
 // constants
 import { ROUTER } from '@/constants/router';
 
+// icons
+import { BackIcon } from '@/icons/BackIcon';
+
 export interface RoleFormProps {
   id?: string;
   role?: RoleModel;
@@ -53,7 +56,7 @@ const RoleForm = ({ id, role }: RoleFormProps) => {
 
   return (
     <form
-      className="max-w-md mx-auto p-4 bg-white shadow-md rounded-lg"
+      className="max-w-full md:max-w-2xl lg:max-w-4xl xl:max-w-full mx-auto p-4 bg-white shadow-md rounded-lg"
       action={dispatch}
     >
       <h2 className="text-xl font-bold mb-4">Role</h2>
@@ -103,16 +106,32 @@ const RoleForm = ({ id, role }: RoleFormProps) => {
             ))}
         </div>
       </div>
-      <div className="flex justify-end space-x-2">
-        <Link href={ROUTER.ROLES}>
-          <Button customClass="px-4 py-2 border rounded-md" variant="outline">
-            Cancel
-          </Button>
-        </Link>
-        <SubmitButton
-          label={id ? 'Update Role' : 'Create Role'}
-          disabled={!hasFormChanged()}
-        />
+      <div className="flex flex-col sm:flex-row sm:justify-between items-center space-y-2 sm:space-y-0 sm:space-x-2">
+        <div className="w-full sm:w-auto">
+          <Link href={ROUTER.ROLES}>
+            <Button
+              customClass="w-full sm:w-auto px-4 py-2 border border-blue-500 text-blue-500 rounded-md"
+              variant="outline"
+              startIcon={<BackIcon />}
+            >
+              Back to Role List
+            </Button>
+          </Link>
+        </div>
+        <div className="flex flex-col sm:flex-row sm:space-x-2 space-y-2 sm:space-y-0 w-full sm:w-auto">
+          <Link href={ROUTER.ROLES}>
+            <Button
+              customClass="w-full sm:w-auto px-4 py-2 border rounded-md"
+              variant="outline"
+            >
+              Cancel
+            </Button>
+          </Link>
+          <SubmitButton
+            label={id ? 'Update Role' : 'Create Role'}
+            disabled={!hasFormChanged()}
+          />
+        </div>
       </div>
     </form>
   );
