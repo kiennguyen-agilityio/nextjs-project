@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders role form 1`] = `
+exports[`RoleForm renders empty role form 1`] = `
 <DocumentFragment>
   <form
-    class="max-w-md mx-auto p-4 bg-white shadow-md rounded-lg"
+    class="max-w-full md:max-w-2xl lg:max-w-4xl xl:max-w-full mx-auto p-4 bg-white shadow-md rounded-lg"
   >
     <h2
       class="text-xl font-bold mb-4"
@@ -50,40 +50,81 @@ exports[`renders role form 1`] = `
     >
       <label
         class="block text-sm font-medium text-gray-700"
+        for="description"
       >
         Description
       </label>
       <textarea
         class="mt-1 p-2 w-full border rounded-md"
+        id="description"
         name="description"
         rows="4"
       />
       <div
         aria-atomic="true"
         aria-live="polite"
-        id="name-error"
+        id="description-error"
       />
     </div>
     <div
-      class="flex justify-end space-x-2"
+      class="flex flex-col sm:flex-row sm:justify-between items-center space-y-2 sm:space-y-0 sm:space-x-2"
     >
-      <a
-        href="/roles"
+      <div
+        class="w-full sm:w-auto"
       >
-        <button
-          class="flex items-center rounded p-2 border border-gray-200 dark:border-gray-700 hover:bg-gray-100 hover:opacity-80 px-4 py-2 border rounded-md"
-          type="button"
+        <a
+          href="/roles"
         >
-          Cancel
-        </button>
-      </a>
-      <button
-        class="flex items-center rounded p-2 bg-[#4270ec] text-white hover:bg-blue-600 hover:cursor-not-allowed hover:opacity-70 px-4 py-2 bg-blue-500 text-white rounded-md"
-        disabled=""
-        type="submit"
+          <button
+            aria-label="button"
+            class="flex items-center rounded p-2 border border-gray-200 dark:border-gray-700 hover:bg-gray-100 w-full sm:w-auto px-4 py-2 border border-blue-500 text-blue-500 rounded-md"
+            type="button"
+          >
+            <span
+              class="mr-2"
+            >
+              <svg
+                class="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </span>
+            Back to Role List
+          </button>
+        </a>
+      </div>
+      <div
+        class="flex flex-col sm:flex-row sm:space-x-2 space-y-2 sm:space-y-0 w-full sm:w-auto"
       >
-        Create Role
-      </button>
+        <a
+          href="/roles"
+        >
+          <button
+            aria-label="button"
+            class="flex items-center rounded p-2 border border-gray-200 dark:border-gray-700 hover:bg-gray-100 w-full sm:w-auto px-4 py-2 border rounded-md"
+            type="button"
+          >
+            Cancel
+          </button>
+        </a>
+        <button
+          aria-label="button"
+          class="flex items-center rounded p-2 bg-[#4270ec] text-white hover:cursor-not-allowed hover:opacity-70 px-4 py-2 bg-blue-500 text-white rounded-md"
+          disabled=""
+          type="submit"
+        >
+          Create Role
+        </button>
+      </div>
     </div>
   </form>
 </DocumentFragment>
