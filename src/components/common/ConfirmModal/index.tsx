@@ -1,3 +1,9 @@
+'use client';
+import { useState } from 'react';
+
+// components
+import Button from '@/components/common/Button';
+
 interface ConfirmationModalProps {
   isOpen: boolean;
   onConfirm: () => void;
@@ -11,6 +17,14 @@ const ConfirmationModal = ({
   onCancel,
   message,
 }: ConfirmationModalProps) => {
+  const [loading, setLoading] = useState(false);
+
+  const handleConfirm = async () => {
+    setLoading(true);
+    await onConfirm();
+    setLoading(false);
+  };
+
   if (!isOpen) return null;
 
   return (
@@ -18,18 +32,12 @@ const ConfirmationModal = ({
       <div className="bg-white p-6 rounded-lg shadow-lg">
         <p className="mb-4">{message}</p>
         <div className="flex justify-end">
-          <button
-            className="bg-gray-500 text-white px-4 py-2 rounded mr-2"
-            onClick={onCancel}
-          >
+          <Button variant="secondary" onClick={onCancel} customClass="mr-2">
             Cancel
-          </button>
-          <button
-            className="bg-red-500 text-white px-4 py-2 rounded"
-            onClick={onConfirm}
-          >
+          </Button>
+          <Button variant="error" onClick={handleConfirm} loading={loading}>
             Confirm
-          </button>
+          </Button>
         </div>
       </div>
     </div>

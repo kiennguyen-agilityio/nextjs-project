@@ -33,7 +33,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           <div className="w-full flex-none md:w-64">
             <SideNav />
           </div>
-          <div className="flex-grow p-6 md:overflow-y-auto md:p-1">
+          <div className="flex-grow p-6 md:overflow-y-auto md:p-4">
             <Template>{children}</Template>
           </div>
         </div>

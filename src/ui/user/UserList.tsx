@@ -1,5 +1,5 @@
 // components
-import Category from '@/components/Category';
+import Category from '@/components/TableHeader';
 import UserRow from '@/components/UserRow';
 import Pagination from '@/components/common/Pagination';
 
@@ -32,7 +32,7 @@ const UserList = async ({
 
   return (
     <>
-      <table className="w-full table-auto">
+      <table className="w-full table-auto mb-4">
         <Category roles={roles} />
         <tbody>
           {users.map(async ({ id, avatar, email, name, userRole, joined }) => {

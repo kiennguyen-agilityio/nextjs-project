@@ -14,7 +14,7 @@ interface CategoryProps {
   roles: RoleModel[];
 }
 
-const Category = ({ roles }: CategoryProps) => {
+const TableHeader = ({ roles }: CategoryProps) => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
@@ -67,4 +67,4 @@ const Category = ({ roles }: CategoryProps) => {
   );
 };
 
-export default Category;
+export default TableHeader;
