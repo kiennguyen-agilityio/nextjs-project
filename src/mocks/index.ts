@@ -16,8 +16,8 @@ export const listCategory = [
     id: '2',
     label: 'Full Name',
     options: [
-      { value: 'asc', label: 'Asc' },
-      { value: 'desc', label: 'Desc' },
+      { value: 'asc', label: 'Full Name: Asc' },
+      { value: 'desc', label: 'Full Name: Desc' },
     ],
     name: 'name',
   },
@@ -31,8 +31,8 @@ export const listCategory = [
     id: '4',
     label: 'Joined',
     options: [
-      { value: 'asc', label: 'Asc' },
-      { value: 'desc', label: 'Desc' },
+      { value: 'asc', label: 'Joined: Asc' },
+      { value: 'desc', label: 'Joined: Desc' },
     ],
     name: 'joined',
   },

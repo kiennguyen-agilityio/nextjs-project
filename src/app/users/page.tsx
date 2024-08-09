@@ -40,7 +40,7 @@ const UserPage = async ({ searchParams = {} }: UserPageProps) => {
   const roles = await getRoleList();
 
   return (
-    <main className="px-14 py-4">
+    <main className="px-14 py-4 shadow-lg sm:rounded-lg p-5">
       <Suspense fallback={<UserSkeleton />}>
         <div className="flex justify-between items-center mb-4">
           <h1 className="font-bold text-lg">Company Users</h1>

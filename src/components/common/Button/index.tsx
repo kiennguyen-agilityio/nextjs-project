@@ -1,5 +1,8 @@
 import type { ReactNode } from 'react';
 
+// components
+import Spinner from '@/components/common/Spinner';
+
 type ButtonProps = {
   children: ReactNode;
   startIcon?: ReactNode;
@@ -18,6 +21,7 @@ type ButtonProps = {
   value?: string;
   ariaLabel?: string;
   disabled?: boolean;
+  loading?: boolean;
   onClick?: () => void;
 };
 
@@ -27,39 +31,51 @@ export const Button = ({
   endIcon,
   type = 'button',
   variant = 'primary',
-  customClass,
+  customClass = '',
   name,
   value,
-  ariaLabel,
-  disabled,
+  ariaLabel = 'button',
+  disabled = false,
+  loading = false,
   onClick,
-}: ButtonProps) => {
+}: ButtonProps): JSX.Element => {
   const baseClass = 'flex items-center rounded p-2';
-  let stateClass = '';
 
+  let stateClass = '';
+  let hoverClass = '';
   switch (variant) {
     case 'primary':
-      stateClass = `bg-[#4270ec] text-white hover:bg-blue-600 ${disabled ? 'hover:cursor-not-allowed hover:opacity-70' : `hover:opacity-80`}`;
+      stateClass = 'bg-[#4270ec] text-white';
+      hoverClass = 'hover:bg-blue-600';
       break;
     case 'secondary':
-      stateClass = `bg-white text-[#62656e] hover:bg-gray-300 ${disabled ? 'hover:cursor-not-allowed hover:opacity-70' : `hover:opacity-80`}`;
+      stateClass = 'bg-white text-[#62656e]';
+      hoverClass = 'hover:bg-gray-300';
       break;
     case 'success':
-      stateClass = `bg-green-600 text-white hover:bg-green-700 ${disabled ? 'hover:cursor-not-allowed hover:opacity-70' : `hover:opacity-80`}`;
+      stateClass = 'bg-green-600 text-white';
+      hoverClass = 'hover:bg-green-700';
       break;
     case 'warning':
-      stateClass = `bg-amber-400 text-black hover:bg-amber-500 ${disabled ? 'hover:cursor-not-allowed hover:opacity-70' : `hover:opacity-80`}`;
+      stateClass = 'bg-amber-400 text-black';
+      hoverClass = 'hover:bg-amber-500';
       break;
     case 'error':
-      stateClass = `bg-rose-500 text-white hover:bg-rose-600 ${disabled ? 'hover:cursor-not-allowed hover:opacity-70' : `hover:opacity-80`}`;
+      stateClass = 'bg-rose-500 text-white';
+      hoverClass = 'hover:bg-rose-600';
       break;
     case 'outline':
-      stateClass = `border border-gray-200 dark:border-gray-700 hover:bg-gray-100 ${disabled ? 'hover:cursor-not-allowed hover:opacity-70' : `hover:opacity-80`}`;
+      stateClass = 'border border-gray-200 dark:border-gray-700';
+      hoverClass = 'hover:bg-gray-100';
       break;
-
     default:
       break;
   }
+
+  const disabledClass =
+    disabled || loading
+      ? 'hover:cursor-not-allowed hover:opacity-70'
+      : hoverClass;
 
   return (
     <button
@@ -67,13 +83,16 @@ export const Button = ({
       name={name}
       value={value}
       aria-label={ariaLabel}
-      className={[baseClass, stateClass, customClass].join(' ')}
-      disabled={disabled}
+      className={`${baseClass} ${stateClass} ${disabledClass} ${customClass}`}
+      disabled={disabled || loading}
       onClick={onClick}
     >
-      {startIcon && <span className="mr-2">{startIcon}</span>}
-      {children}
-      {endIcon && <span className="ml-r">{endIcon}</span>}
+      {startIcon && !loading && <span className="mr-2">{startIcon}</span>}
+      {loading && <Spinner />}
+      {loading ? <span className="ml-2">{children}</span> : children}
+      {endIcon && !loading && <span className="ml-2">{endIcon}</span>}
     </button>
   );
 };
+
+export default Button;
