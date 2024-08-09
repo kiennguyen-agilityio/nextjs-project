@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
 
 // components
-import Category from '@/components/Category';
+import TableHeader from '@/components/TableHeader';
 
 // mocks
 import { roles } from '@/mocks';
@@ -23,7 +23,7 @@ jest.mock('next/navigation', () => ({
 test('renders Category component with dropdown buttons', () => {
   const { asFragment } = render(
     <table>
-      <Category roles={roles} />
+      <TableHeader roles={roles} />
     </table>,
   );
   expect(asFragment()).toMatchSnapshot();

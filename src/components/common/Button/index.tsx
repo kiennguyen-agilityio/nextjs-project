@@ -14,7 +14,6 @@ type ButtonProps = {
     | 'secondary'
     | 'success'
     | 'error'
-    | 'info'
     | 'warning';
   customClass?: string;
   name?: string;
@@ -69,6 +68,8 @@ export const Button = ({
       hoverClass = 'hover:bg-gray-100';
       break;
     default:
+      stateClass = 'bg-gray-300 text-black';
+      hoverClass = 'hover:bg-gray-400';
       break;
   }
 

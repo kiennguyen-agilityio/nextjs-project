@@ -78,7 +78,11 @@ const RoleForm = ({ id, role }: RoleFormProps) => {
         <div id="name-error" aria-live="polite" aria-atomic="true">
           {state.errors?.name &&
             state.errors.name.map((error: string) => (
-              <p className="mt-2 text-sm text-red-600" key={error}>
+              <p
+                className="mt-2 text-sm text-red-600"
+                key={error}
+                data-testid="name-error"
+              >
                 {error}
               </p>
             ))}
@@ -86,10 +90,14 @@ const RoleForm = ({ id, role }: RoleFormProps) => {
       </div>
 
       <div className="mb-4">
-        <label className="block text-sm font-medium text-gray-700">
+        <label
+          htmlFor="description"
+          className="block text-sm font-medium text-gray-700"
+        >
           Description
         </label>
         <textarea
+          id="description"
           name="description"
           value={formData.description}
           className="mt-1 p-2 w-full border rounded-md"
@@ -97,7 +105,7 @@ const RoleForm = ({ id, role }: RoleFormProps) => {
           rows={4}
         />
 
-        <div id="name-error" aria-live="polite" aria-atomic="true">
+        <div id="description-error" aria-live="polite" aria-atomic="true">
           {state.errors?.description &&
             state.errors.description.map((error: string) => (
               <p className="mt-2 text-sm text-red-600" key={error}>
@@ -130,6 +138,7 @@ const RoleForm = ({ id, role }: RoleFormProps) => {
           <SubmitButton
             label={id ? 'Update Role' : 'Create Role'}
             disabled={!hasFormChanged()}
+            data-testid="submit-button"
           />
         </div>
       </div>
