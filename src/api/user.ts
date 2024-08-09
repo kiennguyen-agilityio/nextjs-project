@@ -32,24 +32,55 @@ export const getUserList = async (
 export const getTotalUsers = async () => {
   const USER_LIST_URL = `${process.env.API_URL}/${API_ENDPOINT.USER_LIST}`;
 
-  const res = await fetch(USER_LIST_URL, {
-    cache: 'no-store',
-  });
+  try {
+    const res = await fetch(USER_LIST_URL, {
+      cache: 'no-store',
+    });
 
-  const data: UserModel[] = await res.json();
+    if (!res.ok) {
+      throw new Error('Failed to fetch total users');
+    }
 
-  return data.length;
+    const data: UserModel[] = await res.json();
+
+    // Handle case where data might be undefined or null
+    if (!Array.isArray(data)) {
+      throw new Error('Invalid response format');
+    }
+
+    return data.length;
+  } catch (error) {
+    // Rethrow or handle the error
+    throw new Error((error as Error).message || 'Failed to fetch total users');
+  }
 };
 
 export const getUserById = async (id: string) => {
   const USER_BY_ID_URL = `${process.env.API_URL}/${API_ENDPOINT.USER_LIST}/${id}`;
-  const res = await fetch(USER_BY_ID_URL, {
-    cache: 'no-store',
-  });
 
-  const data: UserModel = await res.json();
+  try {
+    const res = await fetch(USER_BY_ID_URL, {
+      cache: 'no-store',
+    });
 
-  return data;
+    if (!res.ok) {
+      throw new Error('Failed to fetch user by id');
+    }
+
+    const data: UserModel = await res.json();
+
+    // Handle case where data might be undefined or null
+    if (!data || typeof data !== 'object' || !('id' in data)) {
+      throw new Error('Invalid user data received');
+    }
+
+    return data;
+  } catch (error) {
+    // Handle the error
+    throw new Error(
+      (error as Error).message || 'An error occurred while fetching the user',
+    );
+  }
 };
 
 export const updateUserApi = async (
@@ -140,7 +171,10 @@ export const addUserApi = async (user: {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ ...user, createdAt: new Date() }),
+      body: JSON.stringify({
+        ...user,
+        createdAt: new Date().toISOString(),
+      }),
     });
 
     const result = await res.json();
@@ -152,7 +186,11 @@ export const addUserApi = async (user: {
       };
     }
 
-    return { success: true, ...result };
+    return {
+      success: true,
+      message: 'User added successfully.',
+      ...result,
+    };
   } catch (error) {
     return {
       success: false,
