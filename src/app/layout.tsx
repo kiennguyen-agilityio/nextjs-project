@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { ReactNode } from 'react';
+import { ReactNode, Suspense } from 'react';
 import { Inter } from 'next/font/google';
 
 // components
@@ -33,9 +33,11 @@ export default function RootLayout({ children }: RootLayoutProps) {
           <div className="w-full flex-none md:w-64">
             <SideNav />
           </div>
-          <div className="flex-grow p-6 md:overflow-y-auto md:p-4">
-            <Template>{children}</Template>
-          </div>
+          <Suspense fallback="loading...">
+            <div className="flex-grow p-6 md:overflow-y-auto md:p-4">
+              <Template>{children}</Template>
+            </div>
+          </Suspense>
         </div>
       </body>
     </html>

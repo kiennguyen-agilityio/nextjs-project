@@ -40,36 +40,34 @@ const UserPage = async ({ searchParams = {} }: UserPageProps) => {
   const roles = await getRoleList();
 
   return (
-    <Suspense>
-      <main className="px-14 py-4 shadow-lg sm:rounded-lg p-5">
-        <Suspense fallback={<UserSkeleton />}>
-          <div className="flex justify-between items-center mb-4">
-            <h1 className="font-bold text-lg">Company Users</h1>
-            <div className="flex-grow" />
-            <Link href={ROUTER.USERS + '/create'}>
-              <Button
-                variant="primary"
-                type="button"
-                ariaLabel="Add New User"
-                customClass="ml-4 rounded-2xl"
-                startIcon={<PlusIcon />}
-              >
-                Add New User
-              </Button>
-            </Link>
-          </div>
-          <Tablist />
-          <UserList
-            limit={limit}
-            page={page}
-            sortBy={sortBy}
-            order={order}
-            roles={roles}
-            userRole={userRole}
-          />
-        </Suspense>
-      </main>
-    </Suspense>
+    <main className="px-14 py-4 shadow-lg sm:rounded-lg p-5">
+      <Suspense fallback={<UserSkeleton />}>
+        <div className="flex justify-between items-center mb-4">
+          <h1 className="font-bold text-lg">Company Users</h1>
+          <div className="flex-grow" />
+          <Link href={ROUTER.USERS + '/create'}>
+            <Button
+              variant="primary"
+              type="button"
+              ariaLabel="Add New User"
+              customClass="ml-4 rounded-2xl"
+              startIcon={<PlusIcon />}
+            >
+              Add New User
+            </Button>
+          </Link>
+        </div>
+        <Tablist />
+        <UserList
+          limit={limit}
+          page={page}
+          sortBy={sortBy}
+          order={order}
+          roles={roles}
+          userRole={userRole}
+        />
+      </Suspense>
+    </main>
   );
 };
 
