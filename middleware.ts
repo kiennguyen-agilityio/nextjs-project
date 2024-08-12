@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 // constants
-import { ROUTER } from './constants/router';
+import { ROUTER } from './src/constants/router';
 
 export function middleware(request: NextRequest) {
   if (
