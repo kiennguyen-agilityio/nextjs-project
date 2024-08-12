@@ -23,8 +23,9 @@ import { getRoleList } from '@/api/role';
 import { ROUTER } from '@/constants/router';
 
 export const metadata: Metadata = {
-  title: 'User Listing',
-  description: 'List of all users in the company',
+  title: 'Comprehensive User Directory - Explore All Company Users',
+  description:
+    'Browse the complete list of all users in the company, including their roles, contact details, and profiles. Stay connected with your colleagues and access important user information.',
 };
 
 type UserPageProps = {

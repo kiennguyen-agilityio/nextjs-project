@@ -20,8 +20,9 @@ import { getRoleList } from '@/api/role';
 import { ROUTER } from '@/constants/router';
 
 export const metadata: Metadata = {
-  title: 'Role Listing',
-  description: 'List of all roles in the company',
+  title: 'Comprehensive Role Directory - All Company Roles',
+  description:
+    'View a comprehensive list of all roles within the company. Explore detailed information about each role, including responsibilities, associated departments, and team members.',
 };
 
 const RolePage = async () => {

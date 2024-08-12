@@ -4,8 +4,9 @@ import { Metadata } from 'next';
 import RoleForm from '@/components/RoleForm';
 
 export const metadata: Metadata = {
-  title: 'Create Role',
-  description: 'Create a new role in the system',
+  title: 'Create a New Role - Define Responsibilities and Permissions',
+  description:
+    'Establish a new role in the system by defining responsibilities, permissions, and access levels. Ensure that your team members have the appropriate roles to perform their duties effectively.',
 };
 
 const CreateRolePage = () => {

@@ -13,9 +13,9 @@ import { getRoleList } from '@/api/role';
 import { RoleModel } from '@/models/RoleModel';
 
 export const metadata: Metadata = {
-  title: 'Create User',
-  description: 'Create a new user account.',
-  keywords: ['user', 'create', 'management'],
+  title: 'User Account Creation - Add New Team Members',
+  description:
+    'Easily create a new user account for your team. Fill out the necessary details to onboard new members and grant them access to the company’s resources.',
 };
 
 const CreateUserPage = async () => {
