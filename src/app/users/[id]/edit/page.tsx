@@ -28,8 +28,8 @@ export const generateMetadata = async ({
   const user = await getUserById(params.id);
 
   return {
-    title: `${user.name} - Detailed Profile and Information`,
-    description: `Explore the profile of ${user.name}, including their role, contact details, and activity within the company. Stay updated with the latest information on ${user.name}.`,
+    title: `${user.name} - Profile Overview`,
+    description: `View ${user.name}'s profile, including their role, contact details, and recent activities. Get updated information about this user.`,
   };
 };
 

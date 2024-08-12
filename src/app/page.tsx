@@ -1,9 +1,9 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Welcome to Our Application - Explore Features, Learn, and Grow',
+  title: 'Welcome to Our App - Explore Features and Resources',
   description:
-    'Discover the homepage of our innovative application where you can explore various features, access resources, and engage with a vibrant community. Start your journey with us today!',
+    'Explore our application’s homepage to discover features, access resources, and connect with the community. Start your journey with us!',
 };
 
 const Homepage = () => {

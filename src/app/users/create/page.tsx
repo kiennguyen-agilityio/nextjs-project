@@ -11,12 +11,11 @@ import { getRoleList } from '@/api/role';
 
 // models
 import { RoleModel } from '@/models/RoleModel';
-import { Suspense } from 'react';
 
 export const metadata: Metadata = {
-  title: 'User Account Creation - Add New Team Members',
+  title: 'Create User Account - Onboard New Team Members',
   description:
-    'Easily create a new user account for your team. Fill out the necessary details to onboard new members and grant them access to the company’s resources.',
+    'Create and set up a new user account. Provide necessary details to onboard team members and grant access to company resources.',
 };
 
 const CreateUserPage = async () => {
@@ -27,11 +26,9 @@ const CreateUserPage = async () => {
   }));
 
   return (
-    <Suspense>
-      <div className="p-4">
-        <UserForm roleOptions={roleOptions} />
-      </div>
-    </Suspense>
+    <div className="p-4">
+      <UserForm roleOptions={roleOptions} />
+    </div>
   );
 };
 

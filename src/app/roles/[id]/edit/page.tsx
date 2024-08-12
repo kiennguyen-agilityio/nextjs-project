@@ -23,8 +23,8 @@ export const generateMetadata = async ({
   const role = await getRoleById(params.id);
 
   return {
-    title: `${role.name} Role - Detailed Overview and Responsibilities`,
-    description: `Learn about the ${role.name} role within the company, including key responsibilities, required skills, and associated team members. Discover how this role contributes to our overall mission.`,
+    title: `${role.name} Role - Overview & Responsibilities`,
+    description: `Explore the ${role.name} role, including its key responsibilities, skills required, and its impact on our mission.`,
   };
 };
 
