@@ -11,6 +11,7 @@ import { getRoleList } from '@/api/role';
 
 // models
 import { RoleModel } from '@/models/RoleModel';
+import { Suspense } from 'react';
 
 export const metadata: Metadata = {
   title: 'Create User',
@@ -24,9 +25,11 @@ const CreateUserPage = async () => {
   }));
 
   return (
-    <div className="p-4">
-      <UserForm roleOptions={roleOptions} />
-    </div>
+    <Suspense>
+      <div className="p-4">
+        <UserForm roleOptions={roleOptions} />
+      </div>
+    </Suspense>
   );
 };
 
