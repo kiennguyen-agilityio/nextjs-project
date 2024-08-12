@@ -25,10 +25,11 @@ export const generateMetadata = async ({
 }: {
   params: { id: string };
 }): Promise<Metadata> => {
-  const userName = await getUserById(params.id);
+  const user = await getUserById(params.id);
 
   return {
-    title: userName.name,
+    title: `${user.name} - Detailed Profile and Information`,
+    description: `Explore the profile of ${user.name}, including their role, contact details, and activity within the company. Stay updated with the latest information on ${user.name}.`,
   };
 };
 

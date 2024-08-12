@@ -20,10 +20,11 @@ export const generateMetadata = async ({
 }: {
   params: { id: string };
 }): Promise<Metadata> => {
-  const roleName = await getRoleById(params.id);
+  const role = await getRoleById(params.id);
 
   return {
-    title: roleName.name,
+    title: `${role.name} Role - Detailed Overview and Responsibilities`,
+    description: `Learn about the ${role.name} role within the company, including key responsibilities, required skills, and associated team members. Discover how this role contributes to our overall mission.`,
   };
 };
 

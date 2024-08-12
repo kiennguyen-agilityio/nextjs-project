@@ -1,3 +1,4 @@
+import { Metadata } from 'next';
 import { Suspense } from 'react';
 import Link from 'next/link';
 
@@ -20,6 +21,12 @@ import { getRoleList } from '@/api/role';
 
 // constants
 import { ROUTER } from '@/constants/router';
+
+export const metadata: Metadata = {
+  title: 'Comprehensive User Directory - Explore All Company Users',
+  description:
+    'Browse the complete list of all users in the company, including their roles, contact details, and profiles. Stay connected with your colleagues and access important user information.',
+};
 
 type UserPageProps = {
   searchParams?: {

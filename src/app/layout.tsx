@@ -4,6 +4,7 @@ import { Inter } from 'next/font/google';
 
 // components
 import SideNav from '@/components/SideNav';
+import Spinner from '@/components/common/Spinner';
 
 import './globals.css';
 import Template from './template';
@@ -33,7 +34,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           <div className="w-full flex-none md:w-64">
             <SideNav />
           </div>
-          <Suspense fallback="loading...">
+          <Suspense fallback={<Spinner />}>
             <div className="flex-grow p-6 md:overflow-y-auto md:p-4">
               <Template>{children}</Template>
             </div>
