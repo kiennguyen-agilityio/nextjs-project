@@ -27,27 +27,29 @@ const RolePage = async () => {
   const roles = await getRoleList();
 
   return (
-    <div className="relative shadow-lg sm:rounded-lg p-5">
-      <div className="flex justify-between items-center mb-4">
-        <h1 className="font-bold text-lg">Company Roles</h1>
-        <Link href={ROUTER.ROLES + '/create'}>
-          <Button
-            variant="primary"
-            type="button"
-            ariaLabel="Add New User"
-            customClass="ml-4 rounded-2xl"
-            startIcon={<PlusIcon />}
-          >
-            Add New Role
-          </Button>
-        </Link>
-      </div>
-      <Tablist />
+    <Suspense>
+      <div className="relative shadow-lg sm:rounded-lg p-5">
+        <div className="flex justify-between items-center mb-4">
+          <h1 className="font-bold text-lg">Company Roles</h1>
+          <Link href={ROUTER.ROLES + '/create'}>
+            <Button
+              variant="primary"
+              type="button"
+              ariaLabel="Add New User"
+              customClass="ml-4 rounded-2xl"
+              startIcon={<PlusIcon />}
+            >
+              Add New Role
+            </Button>
+          </Link>
+        </div>
+        <Tablist />
 
-      <Suspense fallback={<RoleSkeleton />}>
-        <RoleList roleList={roles} />
-      </Suspense>
-    </div>
+        <Suspense fallback={<RoleSkeleton />}>
+          <RoleList roleList={roles} />
+        </Suspense>
+      </div>
+    </Suspense>
   );
 };
 
