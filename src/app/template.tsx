@@ -1,5 +1,5 @@
 'use client';
-import { ReactNode, Suspense } from 'react';
+import { ReactNode } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Toast from '@/components/common/Toast';
 
@@ -13,7 +13,7 @@ export default function Template({ children }: TemplateProps) {
   const message = searchParams.get('message');
 
   return (
-    <Suspense fallback="">
+    <div>
       {success && message && (
         <div className="fixed top-5 right-5 z-50">
           <Toast
@@ -23,6 +23,6 @@ export default function Template({ children }: TemplateProps) {
         </div>
       )}
       {children}
-    </Suspense>
+    </div>
   );
 }
