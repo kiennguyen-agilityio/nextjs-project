@@ -1,5 +1,4 @@
 import { Suspense } from 'react';
-import { Metadata } from 'next';
 import Link from 'next/link';
 
 // components
@@ -16,27 +15,23 @@ import Tablist from '@/components/TabList';
 // icons
 import { PlusIcon } from '@/icons/PlusIcon';
 
-// constants
-import { ROUTER } from '@/constants/router';
-
 // apis
 import { getRoleList } from '@/api/role';
 
-export const metadata: Metadata = {
-  title: 'User Listing',
-};
+// constants
+import { ROUTER } from '@/constants/router';
 
 type UserPageProps = {
-  searchParams: {
-    page: number;
-    limit: number;
-    sortBy: string;
-    order: string;
-    userRole: string;
+  searchParams?: {
+    page?: number;
+    limit?: number;
+    sortBy?: string;
+    order?: string;
+    userRole?: string;
   };
 };
 
-const UserPage = async ({ searchParams }: UserPageProps) => {
+const UserPage = async ({ searchParams = {} }: UserPageProps) => {
   const page = Number(searchParams.page) || 1;
   const limit = Number(searchParams.limit) || DEFAULT_LIMIT;
   const sortBy = searchParams.sortBy || 'createdAt';
@@ -45,7 +40,7 @@ const UserPage = async ({ searchParams }: UserPageProps) => {
   const roles = await getRoleList();
 
   return (
-    <main>
+    <main className="px-14 py-4 shadow-lg sm:rounded-lg p-5">
       <Suspense fallback={<UserSkeleton />}>
         <div className="flex justify-between items-center mb-4">
           <h1 className="font-bold text-lg">Company Users</h1>
@@ -63,7 +58,6 @@ const UserPage = async ({ searchParams }: UserPageProps) => {
           </Link>
         </div>
         <Tablist />
-
         <UserList
           limit={limit}
           page={page}

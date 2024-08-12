@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: 'Create Role',
 };
 
-const CreateRolePage = async () => {
+const CreateRolePage = () => {
   return (
     <div className="p-4">
       <RoleForm />

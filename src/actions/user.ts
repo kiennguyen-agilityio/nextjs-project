@@ -1,5 +1,6 @@
 'use server';
 import { z } from 'zod';
+import { redirect } from 'next/navigation';
 
 // utils
 import { extractFormData } from '@/utils/form';
@@ -10,6 +11,9 @@ import { uploadImage } from '@/api/image';
 
 // constants
 import { DEFAULT_AVATAR_URL } from '@/constants/defaultValue';
+
+// constants
+import { ROUTER } from '@/constants/router';
 
 export type UserState = {
   errors?: {
@@ -87,11 +91,17 @@ export const validateUser = async (
 
   const result = await updateUserApi(id, user);
 
-  if (result.message) {
-    return { message: result.message };
+  if (result.success) {
+    redirect(
+      `${ROUTER.USERS}?success=true&message=${encodeURIComponent(result.message)}`,
+    );
+  } else {
+    redirect(
+      `${ROUTER.USERS}/${id}/edit?success=false&message=${encodeURIComponent(result.message)}`,
+    );
   }
 
-  return result;
+  return { message: result.message };
 };
 
 const UserSchema = FormSchema.omit({ id: true });
@@ -138,8 +148,14 @@ export const createUser = async (_: UserState, formData: FormData) => {
 
   const result = await addUserApi(user);
 
-  if (result.message) {
-    return { message: result.message };
+  if (result.success) {
+    redirect(
+      `${ROUTER.USERS}?success=true&message=${encodeURIComponent(result.message || 'User created successfully.')}`,
+    );
+  } else {
+    redirect(
+      `${ROUTER.USERS}?success=false&message=${encodeURIComponent(result.message || 'Failed to create user.')}`,
+    );
   }
 
   return result;

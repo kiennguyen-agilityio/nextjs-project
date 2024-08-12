@@ -4,10 +4,11 @@ import { redirect } from 'next/navigation';
 // constants
 import { API_ENDPOINT } from '@/constants/api-endpoint';
 
+// constants
+import { ROUTER } from '@/constants/router';
+
 // models
 import { RoleModel } from '@/models/RoleModel';
-
-import { ROUTER } from '@/constants/router';
 
 export const getRoleList = async (
   sortBy: string = 'createdAt',
@@ -52,17 +53,19 @@ export const addRoleApi = async (role: {
     const result = await res.json();
 
     if (!res.ok) {
-      return { message: result.message || 'Failed to add user.' };
+      return {
+        success: false,
+        message: result.message || 'Failed to add role.',
+      };
     }
 
-    return result;
+    return { success: true, ...result };
   } catch (error) {
     return {
+      success: false,
       message:
-        (error as Error).message || 'An error occurred while adding the user.',
+        (error as Error).message || 'An error occurred while adding the role.',
     };
-  } finally {
-    redirect(ROUTER.ROLES);
   }
 };
 
@@ -87,23 +90,31 @@ export const updateRoleApi = async (
     const result = await res.json();
 
     if (!res.ok) {
-      return { message: result.message || 'Failed to update role.' };
+      return {
+        success: false,
+        message: result.message || 'Failed to update role.',
+      };
     }
 
-    return result;
+    return {
+      success: true,
+      message: 'Role updated successfully.',
+    };
   } catch (error) {
     return {
+      success: false,
       message:
         (error as Error).message ||
-        'An error occurred while updating the role.',
+        'An error occurred while updating the user.',
     };
-  } finally {
-    redirect(ROUTER.ROLES);
   }
 };
 
 export const deleteRoleApi = async (id: string) => {
   const ROLE_DELETE_URL = `${process.env.API_URL}/${API_ENDPOINT.ROLE_LIST}/${id}`;
+
+  let success = true;
+  let message = 'Role deleted successfully.';
 
   try {
     const res = await fetch(ROLE_DELETE_URL, {
@@ -113,17 +124,16 @@ export const deleteRoleApi = async (id: string) => {
     const result = await res.json();
 
     if (!res.ok) {
-      return { message: result.message || 'Failed to delete role.' };
+      success = false;
+      message = result.message || 'Failed to delete role.';
     }
-
-    return result;
   } catch (error) {
-    return {
-      message:
-        (error as Error).message ||
-        'An error occurred while deleting the role.',
-    };
+    success = false;
+    message =
+      (error as Error).message || 'An error occurred while deleting the role.';
   } finally {
-    redirect(ROUTER.ROLES);
+    redirect(
+      `${ROUTER.ROLES}?success=${success}&message=${encodeURIComponent(message)}`,
+    );
   }
 };

@@ -32,24 +32,55 @@ export const getUserList = async (
 export const getTotalUsers = async () => {
   const USER_LIST_URL = `${process.env.API_URL}/${API_ENDPOINT.USER_LIST}`;
 
-  const res = await fetch(USER_LIST_URL, {
-    cache: 'no-store',
-  });
+  try {
+    const res = await fetch(USER_LIST_URL, {
+      cache: 'no-store',
+    });
 
-  const data: UserModel[] = await res.json();
+    if (!res.ok) {
+      throw new Error('Failed to fetch total users');
+    }
 
-  return data.length;
+    const data: UserModel[] = await res.json();
+
+    // Handle case where data might be undefined or null
+    if (!Array.isArray(data)) {
+      throw new Error('Invalid response format');
+    }
+
+    return data.length;
+  } catch (error) {
+    // Rethrow or handle the error
+    throw new Error((error as Error).message || 'Failed to fetch total users');
+  }
 };
 
 export const getUserById = async (id: string) => {
   const USER_BY_ID_URL = `${process.env.API_URL}/${API_ENDPOINT.USER_LIST}/${id}`;
-  const res = await fetch(USER_BY_ID_URL, {
-    cache: 'no-store',
-  });
 
-  const data: UserModel = await res.json();
+  try {
+    const res = await fetch(USER_BY_ID_URL, {
+      cache: 'no-store',
+    });
 
-  return data;
+    if (!res.ok) {
+      throw new Error('Failed to fetch user by id');
+    }
+
+    const data: UserModel = await res.json();
+
+    // Handle case where data might be undefined or null
+    if (!data || typeof data !== 'object' || !('id' in data)) {
+      throw new Error('Invalid user data received');
+    }
+
+    return data;
+  } catch (error) {
+    // Handle the error
+    throw new Error(
+      (error as Error).message || 'An error occurred while fetching the user',
+    );
+  }
 };
 
 export const updateUserApi = async (
@@ -67,7 +98,6 @@ export const updateUserApi = async (
   try {
     const res = await fetch(USER_UPDATE_URL, {
       method: 'PUT',
-      cache: 'no-store',
       headers: {
         'Content-Type': 'application/json',
       },
@@ -77,45 +107,51 @@ export const updateUserApi = async (
     const result = await res.json();
 
     if (!res.ok) {
-      return { message: result.message || 'Failed to update user.' };
+      return {
+        success: false,
+        message: result.message || 'Failed to update user.',
+      };
     }
 
-    return result;
+    return {
+      success: true,
+      message: 'User updated successfully.',
+    };
   } catch (error) {
     return {
+      success: false,
       message:
         (error as Error).message ||
         'An error occurred while updating the user.',
     };
-  } finally {
-    redirect(ROUTER.USERS);
   }
 };
 
 export const deleteUserApi = async (id: string) => {
   const USER_DELETE_URL = `${process.env.API_URL}/${API_ENDPOINT.USER_LIST}/${id}`;
 
+  let success = true;
+  let message = 'User deleted successfully.';
+
   try {
     const res = await fetch(USER_DELETE_URL, {
       method: 'DELETE',
-      cache: 'no-store',
     });
 
     const result = await res.json();
 
     if (!res.ok) {
-      return { message: result.message || 'Failed to delete user.' };
+      success = false;
+      message = result.message || 'Failed to delete user.';
     }
-
-    return result;
   } catch (error) {
-    return {
-      message:
-        (error as Error).message ||
-        'An error occurred while deleting the user.',
-    };
+    success = false;
+    message =
+      (error as Error).message || 'An error occurred while deleting the user.';
   } finally {
-    redirect(ROUTER.USERS);
+    redirect(
+      `${ROUTER.USERS}?success=${success}&message=${encodeURIComponent(message)}`,
+    );
   }
 };
 
@@ -135,23 +171,32 @@ export const addUserApi = async (user: {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ ...user, createdAt: new Date() }),
+      body: JSON.stringify({
+        ...user,
+        createdAt: new Date().toISOString(),
+      }),
     });
 
     const result = await res.json();
 
     if (!res.ok) {
-      return { message: result.message || 'Failed to add user.' };
+      return {
+        success: false,
+        message: result.message || 'Failed to add user.',
+      };
     }
 
-    return result;
+    return {
+      success: true,
+      message: 'User added successfully.',
+      ...result,
+    };
   } catch (error) {
     return {
+      success: false,
       message:
         (error as Error).message || 'An error occurred while adding the user.',
     };
-  } finally {
-    redirect(ROUTER.USERS);
   }
 };
 

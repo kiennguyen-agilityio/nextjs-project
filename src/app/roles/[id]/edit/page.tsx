@@ -30,17 +30,13 @@ export const generateMetadata = async ({
 const RoleDetailPage = async ({ params }: PageProps) => {
   const { id } = params;
 
-  try {
-    const role: RoleModel = await getRoleById(id);
+  const role: RoleModel = await getRoleById(id);
 
-    return (
-      <div className="p-4">
-        <RoleForm id={id} role={role} />
-      </div>
-    );
-  } catch (error) {
-    return null;
-  }
+  return (
+    <div className="p-4">
+      <RoleForm id={id} role={role} />
+    </div>
+  );
 };
 
 export default RoleDetailPage;
