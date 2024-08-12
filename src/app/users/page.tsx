@@ -1,3 +1,4 @@
+import { Metadata } from 'next';
 import { Suspense } from 'react';
 import Link from 'next/link';
 
@@ -20,6 +21,11 @@ import { getRoleList } from '@/api/role';
 
 // constants
 import { ROUTER } from '@/constants/router';
+
+export const metadata: Metadata = {
+  title: 'User Listing',
+  description: 'List of all users in the company',
+};
 
 type UserPageProps = {
   searchParams?: {

@@ -14,6 +14,8 @@ import { RoleModel } from '@/models/RoleModel';
 
 export const metadata: Metadata = {
   title: 'Create User',
+  description: 'Create a new user account.',
+  keywords: ['user', 'create', 'management'],
 };
 
 const CreateUserPage = async () => {

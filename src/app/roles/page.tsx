@@ -21,6 +21,7 @@ import { ROUTER } from '@/constants/router';
 
 export const metadata: Metadata = {
   title: 'Role Listing',
+  description: 'List of all roles in the company',
 };
 
 const RolePage = async () => {
